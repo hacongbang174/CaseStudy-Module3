@@ -70,7 +70,7 @@ public class BillDAO {
     
     public List<Bill> getBillInfo(){
         List<Bill> list = new ArrayList<>();
-        String sql = "select b.bill_id, u.user_name,b.phone,b.address,b.creatDate,b.total,b.payment from bill b inner join user u on b.user_id = u.user_id;";
+        String sql = "select b.bill_id, u.user_name,b.phone,b.address,b.createDate,b.total,b.payment from bill b join user u on b.user_id = u.user_id;";
         try {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(sql);

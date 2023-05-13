@@ -91,7 +91,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <c:forEach items="${detail}" var="d">
+                                    <c:forEach items="${sessionScope.detail}" var="d">
                                         <tr>
                                             <td><img src="${d.product.getImg()}" alt="" width="100px;"></td>
                                             <td>${d.product.getProduct_id()}</td>
@@ -99,7 +99,7 @@
                                             <td>${d.getSize()}</td>
                                             <td>${d.getColor()}</td>
                                             <td>${d.getQuantity()}</td>
-                                            <td>${d.getPrice()}</td>
+                                            <td>${d.getBillDetailPrice(d.getPrice())}</td>
                                         </tr>
                                     </c:forEach>
                                 </tbody>
@@ -179,7 +179,7 @@
                     })
                             .then((willDelete) => {
                                 if (willDelete) {
-                                    window.location = "productmanager?action=deleteproduct&product_id=" + $(this).attr("value");
+                                    window.location = "productManager?action=deleteProduct&product_id=" + $(this).attr("value");
                                     swal("Đã xóa thành công.!", {
                                     });
                                 }

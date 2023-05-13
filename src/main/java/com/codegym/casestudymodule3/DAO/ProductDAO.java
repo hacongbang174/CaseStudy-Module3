@@ -34,7 +34,7 @@ public class ProductDAO {
             }
 
         } catch (Exception e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
         return list;
     }
@@ -53,6 +53,7 @@ public class ProductDAO {
             ps.setString(7, product.getImg());
             ps.executeUpdate();
         } catch (Exception e) {
+            e.printStackTrace();
         }
         String sql1 = "insert into product_size (product_id,size) values(?,?);";
         try {
@@ -64,6 +65,7 @@ public class ProductDAO {
                 ps.executeUpdate();
             }
         } catch (Exception e) {
+            e.printStackTrace();
         }
         String sql2 = "insert into product_color (product_id,color) values(?,?);";
         try {
@@ -75,6 +77,7 @@ public class ProductDAO {
                 ps.executeUpdate();
             }
         } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -86,7 +89,7 @@ public class ProductDAO {
             ps.setString(1, product_id);
             ps.executeUpdate();
         } catch (Exception e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
 
         String sql1 = "delete from product_color where product_id=?;";
@@ -96,27 +99,17 @@ public class ProductDAO {
             ps.setString(1, product_id);
             ps.executeUpdate();
         } catch (Exception e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
 
-        String sql2 = "delete from product_img where product_id=?;";
+        String sq2 = "delete from product where product_id=?;";
         try {
             conn = new DBContext().getConnection();
-            ps = conn.prepareStatement(sql2);
+            ps = conn.prepareStatement(sq2);
             ps.setString(1, product_id);
             ps.executeUpdate();
         } catch (Exception e) {
-            System.out.println(e);
-        }
-
-        String sq3 = "delete from product where product_id=?;";
-        try {
-            conn = new DBContext().getConnection();
-            ps = conn.prepareStatement(sq3);
-            ps.setString(1, product_id);
-            ps.executeUpdate();
-        } catch (Exception e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
 
     }
@@ -130,7 +123,7 @@ public class ProductDAO {
             ps.setString(1, product.getProduct_id());
             ps.executeUpdate();
         } catch (Exception e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
 
         String sql3 = "delete from product_color where product_id=?;";
@@ -140,7 +133,7 @@ public class ProductDAO {
             ps.setString(1, product.getProduct_id());
             ps.executeUpdate();
         } catch (Exception e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
 
         String sql4 = "insert into product_size (product_id,size) values(?,?);";
@@ -153,6 +146,7 @@ public class ProductDAO {
                 ps.executeUpdate();
             }
         } catch (Exception e) {
+            e.printStackTrace();
         }
 
         String sql5 = "insert into product_color (product_id,color) values(?,?);";
@@ -165,6 +159,7 @@ public class ProductDAO {
                 ps.executeUpdate();
             }
         } catch (Exception e) {
+            e.printStackTrace();
         }
 
         String sql = "update product set category_id=? ,product_name=? ,product_price=? ,product_describe=? ,quantity=? ,img=? where product_id=?;";
@@ -180,6 +175,7 @@ public class ProductDAO {
             ps.setString(7, product.getProduct_id());
             ps.executeUpdate();
         } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -194,6 +190,7 @@ public class ProductDAO {
                 list.add(new Size(rs.getString(1), rs.getString(2)));
             }
         } catch (Exception e) {
+            e.printStackTrace();
         }
         return list;
     }
@@ -209,6 +206,7 @@ public class ProductDAO {
                 list.add(new Color(rs.getString(1), rs.getString(2)));
             }
         } catch (Exception e) {
+            e.printStackTrace();
         }
         return list;
     }
@@ -224,6 +222,7 @@ public class ProductDAO {
                 list.add(new Category(rs.getInt(1), rs.getString(2)));
             }
         } catch (Exception e) {
+            e.printStackTrace();
         }
         return list;
     }
@@ -239,6 +238,7 @@ public class ProductDAO {
                 return new Category(rs.getInt(1), rs.getString(2));
             }
         } catch (Exception e) {
+            e.printStackTrace();
         }
         return null;
     }
@@ -251,6 +251,7 @@ public class ProductDAO {
             ps.setString(1, name);
             ps.executeUpdate();
         } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -265,7 +266,7 @@ public class ProductDAO {
                 list.add(new Product(rs.getString(1), rs.getString(2), rs.getFloat(3), rs.getString(4), rs.getInt(5), rs.getString(6)));
             }
         } catch (Exception e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
         return list;
     }
@@ -281,7 +282,7 @@ public class ProductDAO {
                 list.add(new Product(rs.getString(1), rs.getString(2), rs.getFloat(3), rs.getString(4), rs.getInt(5), rs.getString(6)));
             }
         } catch (Exception e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
         return list;
     }
@@ -298,7 +299,7 @@ public class ProductDAO {
                 list.add(new Product(c, rs.getString(2), rs.getString(3), rs.getFloat(4), rs.getString(5), rs.getInt(6), rs.getString(7)));
             }
         } catch (Exception e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
         return list;
     }
@@ -315,7 +316,7 @@ public class ProductDAO {
                 list.add(new Product(c, rs.getString(2), rs.getString(3), rs.getFloat(4), rs.getString(5), rs.getInt(6), rs.getString(7)));
             }
         } catch (Exception e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
         return list;
     }
@@ -332,7 +333,7 @@ public class ProductDAO {
                 list.add(new Product(c, rs.getString(2), rs.getString(3), rs.getFloat(4), rs.getString(5), rs.getInt(6), rs.getString(7)));
             }
         } catch (Exception e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
         return list;
     }
@@ -358,7 +359,7 @@ public class ProductDAO {
                 list.add(new Product(c, rs.getString(2), rs.getString(3), rs.getFloat(4), rs.getString(5), rs.getInt(6), rs.getString(7)));
             }
         } catch (Exception e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
         return list;
     }
@@ -376,7 +377,7 @@ public class ProductDAO {
                 return (new Product(c, rs.getString(3), rs.getString(4), rs.getFloat(5), rs.getString(6), rs.getInt(7), rs.getString(8)));
             }
         } catch (Exception e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
         return null;
     }
@@ -393,6 +394,7 @@ public class ProductDAO {
                 list.add(new Size(rs.getString(1), rs.getString(2)));
             }
         } catch (Exception e) {
+            e.printStackTrace();
         }
         return list;
     }
@@ -409,6 +411,7 @@ public class ProductDAO {
                 list.add(new Color(rs.getString(1), rs.getString(2)));
             }
         } catch (Exception e) {
+            e.printStackTrace();
         }
         return list;
     }
@@ -424,6 +427,7 @@ public class ProductDAO {
                 count = rs.getInt(1);
             }
         } catch (Exception e) {
+            e.printStackTrace();
         }
         return count;
     }
@@ -439,6 +443,7 @@ public class ProductDAO {
                 count = rs.getInt(1);
             }
         } catch (Exception e) {
+            e.printStackTrace();
         }
         return count;
     }
@@ -454,13 +459,14 @@ public class ProductDAO {
                 count = rs.getInt(1);
             }
         } catch (Exception e) {
+            System.out.println(e);
         }
         return count;
     }
 
     public int CountProductLow() {
         int count = 0;
-        String sql = "SELECT COUNT(*) as 'count' FROM product where quantity < 50;";
+        String sql = "SELECT COUNT(*) as 'count' FROM product where quantity < 10;";
         try {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(sql);
@@ -469,8 +475,27 @@ public class ProductDAO {
                 count = rs.getInt(1);
             }
         } catch (Exception e) {
+            System.out.println(e);
         }
         return count;
+    }
+    public List<Product> getProductLow() {
+        List<Product> list = new ArrayList<>();
+        String sql = "SELECT * FROM product where quantity < 10;";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Category category = new Category();
+                category.setCategoryName(rs.getString(1));
+                list.add(new Product(category, rs.getString(2), rs.getString(3), rs.getFloat(4), rs.getString(5), rs.getInt(6), rs.getString(7)));
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
     }
 
     public List<Product> SearchAll(String text) {
@@ -492,6 +517,7 @@ public class ProductDAO {
                 list.add(new Product(c, rs.getString(2), rs.getString(3), rs.getFloat(4), rs.getString(5), rs.getInt(6), rs.getString(7)));
             }
         } catch (Exception e) {
+            System.out.println(e);
         }
         return list;
     }

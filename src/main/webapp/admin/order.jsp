@@ -78,7 +78,7 @@
                 <div class="col-md-12">
                     <div class="tile">
                         <div class="tile-body">
-                            <div class="row element-button"
+                            <div class="row element-button">
                                  <div class="col-sm-2">
                                     <a class="btn btn-delete btn-sm print-file" type="button" title="In" onclick="myApp.printTable()"><i
                                             class="fas fa-print"></i> In dữ liệu</a>
@@ -98,14 +98,14 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <c:forEach items="${bill}" var="b">
+                                    <c:forEach items="${requestScope.bill}" var="b">
                                         <tr>
                                             <td>${b.getBill_id()}</td>
                                             <td>${b.user.getUser_name()}</td>
                                             <td>(+84)${b.getPhone()}</td>
                                             <td>${b.getAddress()}</td>
                                             <td>${b.getCreateDate()}</td>
-                                            <td>${b.getTotal()}</td>
+                                            <td>${b.getBillTotal(b.getTotal())}</td>
                                             <td><span class="badge bg-success">${b.getPayment()}</span></td>
                                             <td><a style=" color: rgb(245 157 57);background-color: rgb(251 226 197); padding: 5px;border-radius: 5px;" href="orderManager?action=showDetail&bill_id=${b.getBill_id()}"><i class="fa"></i>Chi tiết đơn hàng</a></td>
                                         </tr>

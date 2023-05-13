@@ -25,7 +25,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
-
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     </head>
 
     <body onload="time()" class="app sidebar-mini rtl">
@@ -64,6 +64,8 @@
                 </li>
                 <li><a class="app-menu__item" href="orderManager"><i class='app-menu__icon bx bx-task'></i><span
                             class="app-menu__label">Quản lý đơn hàng</span></a></li>
+                <li><a class="app-menu__item" href="#"><i class='app-menu__icon fa-solid fa-sack-dollar'></i><span
+                        class="app-menu__label">Quản lý doanh thu</span></a></li>
                 <li><a class="app-menu__item" href="https://docs.google.com/spreadsheets/d/1elWy0LYj9ngbmywMGwy8Noe_K7WmyisQ6aHOK6RnXZI" target="_blank"><i class='app-menu__icon bx bx-task'></i><span
                             class="app-menu__label">Kiểm tra phản hồi</span></a></li>
             </ul>
@@ -108,7 +110,9 @@
                         <div class="col-md-6">
                             <div class="widget-small warning coloured-icon"><i class='icon bx bxs-shopping-bags fa-3x'></i>
                                 <div class="info">
-                                    <h4>Tổng đơn hàng</h4>
+                                    <h4>
+                                        <a href="customerManager">Tổng đơn hàng</a>
+                                    </h4>
                                     <p><b>${requestScope.bill} đơn hàng</b></p>
                                     <p class="info-tong">Tổng số hóa đơn bán hàng trong tháng.</p>
                                 </div>
@@ -118,7 +122,9 @@
                         <div class="col-md-6">
                             <div class="widget-small danger coloured-icon"><i class='icon bx bxs-error-alt fa-3x'></i>
                                 <div class="info">
-                                    <h4>Sắp hết hàng</h4>
+                                    <h4>
+                                        <a href="/productManager?action=productLow">Sắp hết hàng</a>
+                                    </h4>
                                     <p><b>${requestScope.low} sản phẩm</b></p>
                                     <p class="info-tong">Số sản phẩm cảnh báo hết cần nhập thêm.</p>
                                 </div>
@@ -144,7 +150,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <c:forEach items="${billbyday}" var="b">
+                                            <c:forEach items="${requestScope.billbyday}" var="b">
                                                 <tr>
                                                     <td>${b.getBill_id()}</td>
                                                     <td>${b.user.getUser_name()}</td>

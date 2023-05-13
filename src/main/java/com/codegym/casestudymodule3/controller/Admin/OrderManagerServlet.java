@@ -26,48 +26,51 @@ public class OrderManagerServlet extends HttpServlet {
         userDAO = new UserDAO();
     }
 
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         response.setContentType("text/html; charset=UTF-8");
+        String action = request.getParameter("action");
+        if (action == null) {
+            action = "";
+        }
+        switch (action) {
+            case "showDetail":
+                showOrderDetail(request, response);
+                break;
+            default:
+                showOrder(request, response);
+        }
+    }
+
+    private void showOrderDetail(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String bill_id = request.getParameter("bill_id");
+        int id = Integer.parseInt(bill_id);
+        List<BillDetail> detail = billDAO.getDetail(id);
+        request.setAttribute("detail", detail);
+        request.getRequestDispatcher("admin/orderdetail.jsp").forward(request, response);
+    }
+
+    private void showOrder(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             HttpSession session = request.getSession();
             User user = (User) session.getAttribute("user");
-            String action = request.getParameter("action");
-            BillDAO dao = new BillDAO();
-
             if (user.getRole().equalsIgnoreCase("true")) {
-                if (action == null) {
-                    List<Bill> bill = dao.getBillInfo();
-                    request.setAttribute("bill", bill);
-                    request.getRequestDispatcher("admin/order.jsp").forward(request, response);
-                }
-                if(action.equals("showDetail")){
-                   String bill_id = request.getParameter("bill_id");
-                   int id = Integer.parseInt(bill_id);
-                   List<BillDetail> detail = dao.getDetail(id);
-                   request.setAttribute("detail", detail);
-                   request.getRequestDispatcher("admin/orderetail.jsp").forward(request, response);
-                }
+                List<Bill> bill = billDAO.getBillInfo();
+                request.setAttribute("bill", bill);
+                request.getRequestDispatcher("admin/order.jsp").forward(request, response);
             } else {
                 response.sendRedirect("user?action=login");
             }
-
         } catch (Exception e) {
             response.sendRedirect("404.jsp");
         }
 
     }
-
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        processRequest(request, response);
-    }
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        processRequest(request, response);
+
     }
 
     @Override

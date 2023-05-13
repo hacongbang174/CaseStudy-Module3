@@ -50,7 +50,7 @@
             <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" src="admin/images/user.png" width="50px"
                                                 alt="User Image">
                 <div>
-                    <p class="app-sidebar__user-name"><b>${sessionScope.user.user_name}</b></p>
+                    <p class="app-sidebar__user-name"><b>${sessionScope.user.getUser_name()}</b></p>
                     <p class="app-sidebar__user-designation">Chào mừng bạn trở lại</p>
                 </div>
             </div>
@@ -80,7 +80,7 @@
                         <div class="tile-body">
                             <div class="row element-button">
                                 <div class="col-sm-2">
-                                    <a class="btn btn-add btn-sm" href="productManager?action=insert" title="Thêm"><i class="fas fa-plus"></i>
+                                    <a class="btn btn-add btn-sm" href="/productManager?action=insert" title="Thêm"><i class="fas fa-plus"></i>
                                         Tạo mới sản phẩm</a>
                                 </div>
                                 <div class="col-sm-2">
@@ -88,7 +88,7 @@
                                             class="fas fa-print"></i> In dữ liệu</a>
                                 </div>
                             </div>
-                            <form action="productManager?action=updateProduct" method="POST">
+                            <form action="/productManager?action=updateProduct" method="POST">
                                 <table class="table table-hover table-bordered" id="sampleTable">
                                     <thead>
                                         <tr>
@@ -105,14 +105,14 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <c:forEach items="${ProductData}" var="p">
+                                        <c:forEach items="${requestScope.ProductData}" var="p">
                                             <tr>
                                                 <td>${p.getProduct_id()}</td>
                                                 <td>${p.cate.getCategoryName()}</td>
                                                 <td>${p.getProduct_name()}</td>
                                                 <td>${p.getProduct_price()}</td>
                                                 <td>
-                                                    <c:forEach items="${SizeData}" var="s">
+                                                    <c:forEach items="${requestScope.SizeData}" var="s">
                                                         <c:if test="${p.getProduct_id()==s.getProduct_id()}">
                                                             ${s.getSize()}
                                                         </c:if>
@@ -120,7 +120,7 @@
                                                 </td>
 
                                                 <td>
-                                                    <c:forEach items="${ColorData}" var="c">
+                                                    <c:forEach items="${requestScope.ColorData}" var="c">
                                                         <c:if test="${p.getProduct_id()==c.getProduct_id()}">
                                                             ${c.getColor()}
                                                         </c:if>
@@ -293,23 +293,51 @@
                                                                         }
         </script>
         <script>
-
-            $(document).ready(jQuery(function () {
-                jQuery(".trash").click(function () {
+            $(document).ready(function () {
+                $(".trash").click(function () {
                     swal({
                         title: "Cảnh báo",
                         text: "Bạn có chắc chắn là muốn xóa sản phẩm này?",
                         buttons: ["Hủy bỏ", "Đồng ý"],
-                    })
-                            .then((willDelete) => {
-                                if (willDelete) {
-                                    window.location = "productmanager?action=deleteproduct&product_id=" + $(this).attr("value");
-                                    swal("Đã xóa thành công.!", {
+                    }).then((willDelete) => {
+                        if (willDelete) {
+                            var productId = $(this).attr("value");
+                            var requestData = {
+                                action: "deleteProduct",
+                                product_id: productId
+                            };
+                            $.ajax({
+                                url: "/productManager?action=deleteProduct",
+                                type: "POST",
+                                data: requestData,
+                                success: function () {
+                                    swal("Đã xóa thành công!", {
+                                        // Các cài đặt swal khi xóa thành công
+                                    }).then(() => {
+                                        location.reload(); // Load lại trang
                                     });
                                 }
                             });
+                        }
+                    });
                 });
-            }));
+            });
+            // $(document).ready(jQuery(function () {
+            //     jQuery(".trash").click(function () {
+            //         swal({
+            //             title: "Cảnh báo",
+            //             text: "Bạn có chắc chắn là muốn xóa sản phẩm này?",
+            //             buttons: ["Hủy bỏ", "Đồng ý"],
+            //         })
+            //                 .then((willDelete) => {
+            //                     if (willDelete) {
+            //                         window.location = "/productManager?action=deleteProduct&product_id=" + $(this).attr("value");
+            //                         swal("Đã xóa thành công.!", {
+            //                         });
+            //                     }
+            //                 });
+            //     });
+            // }));
         </script>
         <script>
             var myApp = new function () {

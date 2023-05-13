@@ -3,6 +3,7 @@ package com.codegym.casestudymodule3.utils;
 import java.util.regex.Pattern;
 
 public class ValidateUtils {
+    public static final String ID_PRODUCT_REGEX = "^[a-zA-Z0-9]{1,10}$";
     public static final String PHONENUMBER_REGEX = "((84|0)[3|5|7|8|9])+([0-9]{8})\\b";
     public static final String EMAIL_REGEX = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$";
     public static final String CCCD_REGEX = "^0\\d{11}$";
@@ -12,9 +13,12 @@ public class ValidateUtils {
     public static final  String BIRTHDAY_REGEX = "^(0?[1-9]|[12][0-9]|3[01])(-|/)(0?[1-9]|1[012])(-|/)((19|20)\\d\\d)$"; //01/01/2023
     public static final String MONTH_REGEX = "^(0?[1-9]|1[012])-((19|20)\\d\\d)$"; // 04-2023
     public static final String FULLNAME_REGEX = "^[\\p{L} \\.'-]+$";
-    public static final String NAMEFOOD_REGEX = "^[\\p{L}0-9\\s\\.\\,\\-'()]{1,40}$";
-    public static boolean isNameFood (String nameFood) {
-        return Pattern.matches(NAMEFOOD_REGEX, nameFood);
+    public static final String NAME_PRODUCT_REGEX = "^[\\p{L}0-9\\s\\.,\\-'()]{5,255}$";
+    public static boolean isIdProduct(String id) {
+        return Pattern.matches(ID_PRODUCT_REGEX, id);
+    }
+    public static boolean isNameProduct(String nameProduct) {
+        return Pattern.matches(NAME_PRODUCT_REGEX, nameProduct);
     }
     public static boolean isFullName (String fullName) {
         return Pattern.matches(FULLNAME_REGEX, fullName);

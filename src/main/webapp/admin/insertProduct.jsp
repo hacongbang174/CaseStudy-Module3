@@ -26,6 +26,7 @@
               href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="http://code.jquery.com/jquery.min.js" type="text/javascript"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.7.5/sweetalert2.all.min.js" integrity="sha512-2JsZvEefv9GpLmJNnSW3w/hYlXEdvCCfDc+Rv7ExMFHV9JNlJ2jaM+uVVlCI1MAQMkUG8K83LhsHYx1Fr2+MuA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
         <c:if test="${requestScope.message !=null}">
             <script>
                 window.onload = function () {
@@ -208,10 +209,10 @@
                                 </div>
                             </div>
 
-                            <form class="row" action="productManager?action=insertProduct" method="POST" enctype="multipart/form-data">
+                            <form class="row" action="/productManager?action=insertProduct" method="POST" enctype="multipart/form-data">
                                 <div class="form-group col-md-3">
                                     <label class="control-label">Mã sản phẩm </label>
-                                    <input class="form-control" name="product_id" type="text" placeholder="">
+                                    <input class="form-control" name="product_id" type="text" placeholder="" value="" required>
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label for="exampleSelect1" class="control-label">Danh mục</label>
@@ -224,31 +225,31 @@
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label class="control-label">Tên sản phẩm</label>
-                                    <input class="form-control" name="product_name" type="text">
+                                    <input class="form-control" name="product_name" type="text" value="" required>
                                 </div>
                                 <div class="form-group  col-md-3">
                                     <label class="control-label">Giá bán</label>
-                                    <input class="form-control" name="price" type="number">
+                                    <input class="form-control" name="price" type="number" value="" required>
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label class="control-label">Size</label>
-                                    <input class="form-control" name="size" type="text" placeholder="S,L,XL,...">
+                                    <input class="form-control" name="size" type="text" placeholder="S,L,XL,..." value="" required>
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label class="control-label">Màu</label>
-                                    <input class="form-control" placeholder="Blue,Gray,..." name="color" type="text">
+                                    <input class="form-control" placeholder="Blue,Gray,..." name="color" type="text" value="" required>
                                 </div>
                                 <div class="form-group  col-md-3">
                                     <label class="control-label">Số lượng</label>
-                                    <input class="form-control" name="quantity" type="number">
+                                    <input class="form-control" name="quantity" type="number" value="" required>
                                 </div>
                                 <div class="form-group col-md-12">
                                     <label class="control-label">Ảnh sản phẩm</label>
                                     <div id="myfileupload">
-                                        <input type="file" id="uploadfile" name="product_img" onchange="readURL(this);" />
+                                        <input type="file" id="uploadfile" name="product_img" onchange="readURL(this);" value="" required>
                                     </div>
                                     <div id="thumbbox">
-                                        <img height="450" width="400" alt="Thumb image" id="thumbimage" style="display: none" />
+                                        <img height="450" width="400" alt="Thumb image" id="thumbimage" style="display: none"/>
                                         <a class="removeimg" href="javascript:"></a>
                                     </div>
                                     <div id="boxchoice">
@@ -260,6 +261,15 @@
                                     <label class="control-label">Mô tả sản phẩm</label>
                                     <textarea class="form-control" name="describe" id="describe"></textarea>
                                 </div>
+                                <c:if test="${requestScope.errors !=null}">
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            <c:forEach items="${requestScope.errors}" var="e">
+                                                <li>${e}</li>
+                                            </c:forEach>
+                                        </ul>
+                                    </div>
+                                </c:if>
                                 <button class="btn btn-save" type="submit">Lưu lại</button>
                                 &nbsp;
                                 <a class="btn btn-cancel" href="productManager">Hủy bỏ</a>
@@ -287,9 +297,9 @@
                             <div class="form-group col-md-12" >
 
                                 <h2 style="color: red; padding-left: 10px">
-                                    ${error}</h2>
+                                    ${requestScope.error}</h2>
                                 <label class="control-label">Nhập tên danh mục mới</label>
-                                <form action="productManager?action=insertCategory" method="post">
+                                <form action="/productManager?action=insertCategory" method="post">
                                     <input class="form-control" type="text" name="name" required>
                                     <br>
                                     <button class="btn btn-save" type="submit">Lưu lại</button>
