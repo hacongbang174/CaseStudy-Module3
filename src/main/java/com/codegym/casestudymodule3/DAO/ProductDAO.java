@@ -479,6 +479,7 @@ public class ProductDAO {
         }
         return count;
     }
+
     public List<Product> getProductLow() {
         List<Product> list = new ArrayList<>();
         String sql = "SELECT * FROM product where quantity < 10;";

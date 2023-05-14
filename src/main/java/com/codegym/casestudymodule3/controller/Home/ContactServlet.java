@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+
 @WebServlet(name = "contactServlet", urlPatterns = "/contact")
 public class ContactServlet extends HttpServlet {
     @Override
@@ -19,6 +20,7 @@ public class ContactServlet extends HttpServlet {
         RequestDispatcher rq = request.getRequestDispatcher("contact.jsp");
         rq.forward(request, response);
     }
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");

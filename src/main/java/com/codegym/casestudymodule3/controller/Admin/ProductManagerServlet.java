@@ -19,14 +19,11 @@ import java.util.List;
 @WebServlet(name = "productManagerServlet", urlPatterns = "/productManager")
 public class ProductManagerServlet extends HttpServlet {
     private ProductDAO productDAO;
-    private BillDAO billDAO;
-    private UserDAO userDAO;
 
     @Override
     public void init() throws ServletException {
         productDAO = new ProductDAO();
-        billDAO = new BillDAO();
-        userDAO = new UserDAO();
+
     }
 
     @Override
@@ -47,6 +44,32 @@ public class ProductManagerServlet extends HttpServlet {
                 break;
             default:
                 showProduct(request, response);
+        }
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html; charset=UTF-8");
+        String action = request.getParameter("action");
+        if (action == null) {
+            action = "";
+        }
+        switch (action) {
+            case "insertCategory":
+                insertCategory(request, response);
+                break;
+            case "insertProduct":
+                insertProduct(request, response);
+                break;
+            case "updateProduct":
+                updateProduct(request, response);
+                break;
+            case "deleteProduct":
+                deleteProduct(request, response);
+                break;
+            default:
         }
     }
 
@@ -98,31 +121,6 @@ public class ProductManagerServlet extends HttpServlet {
         }
     }
 
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setCharacterEncoding("UTF-8");
-        response.setCharacterEncoding("UTF-8");
-        response.setContentType("text/html; charset=UTF-8");
-        String action = request.getParameter("action");
-        if (action == null) {
-            action = "";
-        }
-        switch (action) {
-            case "insertCategory":
-                insertCategory(request, response);
-                break;
-            case "insertProduct":
-                insertProduct(request, response);
-                break;
-            case "updateProduct":
-                updateProduct(request, response);
-                break;
-            case "deleteProduct":
-                deleteProduct(request, response);
-                break;
-            default:
-        }
-    }
 
     private void deleteProduct(HttpServletRequest request, HttpServletResponse response) throws IOException {
         try {
@@ -137,14 +135,19 @@ public class ProductManagerServlet extends HttpServlet {
     }
 
     private void updateProduct(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        List<String> errors = new ArrayList<>();
+        Product product = new Product();
         try {
             String product_id = request.getParameter("product_id");
+
+            validateProductId(request, errors, product, product_id);
+            validateProductName(request, errors, product);
+            validatePrice(request, errors, product);
+            validateQuantity(request, errors, product);
+
             String category_id = request.getParameter("category_id");
-            String product_name = request.getParameter("product_name");
-            String product_price = request.getParameter("product_price");
             String product_size = request.getParameter("product_size");
             String product_color = request.getParameter("product_color");
-            String product_quantity = request.getParameter("product_quantity");
             String product_img;
             if (request.getParameter("product_img") == null || request.getParameter("product_img") == "") {
                 product_img = productDAO.getProductByID(product_id).getImg();
@@ -152,8 +155,6 @@ public class ProductManagerServlet extends HttpServlet {
                 product_img = "images/" + request.getParameter("product_img");
             }
             String product_describe = request.getParameter("product_describe");
-            int quantity = Integer.parseInt(product_quantity);
-            Float price = Float.parseFloat(product_price);
             int cid = Integer.parseInt(category_id);
             Category cate = new Category(cid);
             String[] size_rw = product_size.split("\\s*,\\s*");
@@ -179,13 +180,9 @@ public class ProductManagerServlet extends HttpServlet {
             } catch (Exception e) {
             }
 
-            Product product = new Product();
             product.setCate(cate);
             product.setProduct_id(product_id);
-            product.setProduct_name(product_name);
-            product.setProduct_price(price);
             product.setProduct_describe(product_describe);
-            product.setQuantity(quantity);
             product.setImg(product_img);
             product.setSize(list);
             product.setColor(list2);
@@ -202,19 +199,18 @@ public class ProductManagerServlet extends HttpServlet {
         try {
             String product_id = request.getParameter("product_id");
 
-            validateProductId(request,errors,product, product_id);
-            validateProductName(request,errors,product);
-            validatePrice(request,errors,product);
+            validateProductId(request, errors, product, product_id);
+            validateProductName(request, errors, product);
+            validatePrice(request, errors, product);
+            validateQuantity(request, errors, product);
 
             String category_id = request.getParameter("category_id");
-
             String product_size = request.getParameter("size");
             String product_color = request.getParameter("color");
 
-            String product_quantity = request.getParameter("quantity");
             String product_img = "images/" + request.getParameter("product_img");
             String product_describe = request.getParameter("describe");
-            int quantity = Integer.parseInt(product_quantity);
+
             int cid = Integer.parseInt(category_id);
             Category cate = new Category(cid);
             String[] size_rw = product_size.split("\\s*,\\s*");
@@ -243,12 +239,16 @@ public class ProductManagerServlet extends HttpServlet {
 
             product.setCate(cate);
             product.setProduct_describe(product_describe);
-            product.setQuantity(quantity);
             product.setImg(product_img);
             product.setSize(sizeList);
             product.setColor(colorList);
-            productDAO.insertProduct(product);
-            request.setAttribute("message", "Thêm sản phẩm thành công");
+
+            if (errors.isEmpty()) {
+                productDAO.insertProduct(product);
+                request.setAttribute("message", "Thêm sản phẩm thành công");
+            } else {
+                request.setAttribute("errors", errors);
+            }
             request.getRequestDispatcher("/admin/insertProduct.jsp").forward(request, response);
 //            response.sendRedirect("/productManager?action=insertProduct");
         } catch (Exception e) {
@@ -285,15 +285,29 @@ public class ProductManagerServlet extends HttpServlet {
         if (!ValidateUtils.isNameProduct(product_name)) {
             errors.add("Tên sản phẩm không hợp lệ. Phải bắt đầu là chữ số và có từ 6-255 kí tự!");
         }
-        product.setProduct_id(product_name);
+        product.setProduct_name(product_name);
     }
+
     private void validatePrice(HttpServletRequest req, List<String> errors, Product product) {
         try {
-            double price = Double.parseDouble(req.getParameter("price"));
+            double price = Double.parseDouble(req.getParameter("product_price"));
             if (price < 0 || price > 10000000) {
                 errors.add("Giá phải lớn hơn 0 và nhỏ hơn 10000000");
-            }else{
+            } else {
                 product.setProduct_price(price);
+            }
+        } catch (NumberFormatException numberFormatException) {
+            errors.add("Định dạng giá không hợp lệ");
+        }
+    }
+
+    private void validateQuantity(HttpServletRequest req, List<String> errors, Product product) {
+        try {
+            int quantity = Integer.parseInt(req.getParameter("product_quantity"));
+            if (quantity < 0 || quantity > 1000) {
+                errors.add("Giá phải lớn hơn 0 và nhỏ hơn 1000");
+            } else {
+                product.setQuantity(quantity);
             }
         } catch (NumberFormatException numberFormatException) {
             errors.add("Định dạng giá không hợp lệ");

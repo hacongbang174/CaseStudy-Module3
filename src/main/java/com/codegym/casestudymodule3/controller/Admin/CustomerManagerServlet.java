@@ -37,9 +37,9 @@ public class CustomerManagerServlet extends HttpServlet {
             User user = (User) session.getAttribute("user");
             String action = request.getParameter("action");
             if (user.getRole().equalsIgnoreCase("true")) {
-                    List<User> user1 = userDAO.getUser();
-                    request.setAttribute("user", user1);
-                    request.getRequestDispatcher("admin/customer.jsp").forward(request, response);
+                List<User> user1 = userDAO.getUser();
+                request.setAttribute("user", user1);
+                request.getRequestDispatcher("admin/customer.jsp").forward(request, response);
             } else {
                 response.sendRedirect("user?action=login");
             }

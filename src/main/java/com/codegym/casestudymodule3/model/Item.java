@@ -50,9 +50,5 @@ public class Item {
         this.color = color;
     }
 
-    
 
-    
-    
-    
 }

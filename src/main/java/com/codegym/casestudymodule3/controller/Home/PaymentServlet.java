@@ -24,6 +24,7 @@ public class PaymentServlet extends HttpServlet {
     private UserDAO userDAO;
     private BillDAO billDAO;
     private ProductDAO productDAO;
+
     @Override
     public void init() throws ServletException {
         userDAO = new UserDAO();
@@ -34,11 +35,13 @@ public class PaymentServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        showCheckOut(request,response);
+        showCheckOut(request, response);
     }
+
     private void showCheckOut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.getRequestDispatcher("checkout.jsp").forward(request, response);
     }
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -63,7 +66,7 @@ public class PaymentServlet extends HttpServlet {
             Cart cart = null;
             String payment = null;
             String payment_method = request.getParameter("payment_method");
-            if(payment_method == null) {
+            if (payment_method == null) {
                 request.setAttribute("error", "Vui lòng chọn chức năng thanh toán!");
                 request.getRequestDispatcher("/checkout.jsp").forward(request, response);
             }

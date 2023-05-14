@@ -28,7 +28,7 @@ public class CartServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String action = request.getParameter("action");
         if (action == null) {
-            action ="";
+            action = "";
         }
         switch (action) {
             case "showCart":
@@ -75,8 +75,8 @@ public class CartServlet extends HttpServlet {
         String Squantity = request.getParameter("quantity");
         if (Squantity == "") {
             request.setAttribute("error", "Số lượng không đúng! Vui lòng chọn lại...");
-            showProductDetail(request,response);
-        }else {
+            showProductDetail(request, response);
+        } else {
             try {
                 int quanity = Integer.parseInt(Squantity);
                 Product product = productDAO.getProductByID(product_id);
@@ -88,13 +88,14 @@ public class CartServlet extends HttpServlet {
             List<Item> list = cart.getItems();
             double surcharge = 30000.0;
             session.setAttribute("cart", cart);
-            session.setAttribute("surcharge",surcharge);
+            session.setAttribute("surcharge", surcharge);
             session.setAttribute("total", cart.getTotalMoney());
             session.setAttribute("size", list.size());
             request.setAttribute("message", "Thêm sản phẩm thành công");
-            showProductDetail(request,response);
+            showProductDetail(request, response);
         }
     }
+
     private void showProductDetail(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String product_id = request.getParameter("product_id");
         List<Size> sizeList = productDAO.getSizeByID(product_id);
@@ -108,6 +109,7 @@ public class CartServlet extends HttpServlet {
         request.setAttribute("ProductByCategory", productByCategory);
         request.getRequestDispatcher("/product-details.jsp").forward(request, response);
     }
+
     private void deleteProduct(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         HttpSession session = request.getSession(true);
         Cart cart = null;
@@ -128,6 +130,7 @@ public class CartServlet extends HttpServlet {
         request.setAttribute("message", "Xóa sản phẩm thành công");
         request.getRequestDispatcher("/cart.jsp").forward(request, response);
     }
+
     @Override
     public void destroy() {
 

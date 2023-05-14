@@ -17,7 +17,7 @@ public class User {
         this.user_pass = user_pass;
         this.role = role;
     }
-    
+
     public User(String user_name) {
         this.user_name = user_name;
 
@@ -63,7 +63,5 @@ public class User {
         this.role = role;
     }
 
-  
-    
-    
+
 }

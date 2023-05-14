@@ -1,9 +1,3 @@
-<%-- 
-    Document   : customer
-    Created on : Oct 19, 2021, 11:20:59 PM
-    Author     : Khuong Hung
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -99,7 +93,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <c:forEach items="${user}" var="u">
+                                    <c:forEach items="${requestScope.user}" var="u">
                                         <tr>
                                             <td>${u.getUser_id()}</td>
                                             <td>${u.getUser_name()}</td>
@@ -117,8 +111,8 @@
                 </div>
             </div>
         </main>
-        <c:forEach items="${user}" var="u">           
-            <div class="modal fade" id="ModalUP${u.user_id}" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static"
+        <c:forEach items="${requestScope.user}" var="u">
+            <div class="modal fade" id="ModalUP${u.getUser_id()}" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static"
                  data-keyboard="false">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">

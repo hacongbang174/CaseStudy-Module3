@@ -32,7 +32,7 @@ public class Cart {
         return getItemById(id).getQuantity();
     }
 
-        public Item getItemById(String id) {
+    public Item getItemById(String id) {
         for (Item i : items) {
             if (i.getProduct().getProduct_id().equals(id)) {
                 return i;
@@ -40,6 +40,7 @@ public class Cart {
         }
         return null;
     }
+
     private Item CheckItem(String id, String size, String color) {
         for (Item i : items) {
             if (i.getProduct().getProduct_id().equals(id) && i.size.equals(size) && i.color.endsWith(color)) {
@@ -51,7 +52,7 @@ public class Cart {
 
     // add 1 sản phẩm vào giỏ, nếu có rồi thì tăng số lượng
     public void addItem(Item t) {
-        if (getItemById(t.getProduct().getProduct_id()) != null && CheckItem(t.getProduct().getProduct_id(),t.size, t.color) != null) {
+        if (getItemById(t.getProduct().getProduct_id()) != null && CheckItem(t.getProduct().getProduct_id(), t.size, t.color) != null) {
             Item m = getItemById(t.getProduct().getProduct_id());
             m.setQuantity(m.getQuantity() + t.getQuantity());
         } else {
@@ -74,6 +75,7 @@ public class Cart {
         }
         return t;
     }
+
     public String getBillDetailPrice(double price) {
         String priceNew = CurrencyFormat.covertPriceToString(price);
         return priceNew;

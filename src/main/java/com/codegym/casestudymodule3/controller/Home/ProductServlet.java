@@ -115,6 +115,7 @@ public class ProductServlet extends HttpServlet {
         request.setAttribute("ProductData", product);
         request.getRequestDispatcher("/shop_category.jsp").forward(request, response);
     }
+
     private void showSortProductByName(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Product> productList = productDAO.getProductByName();
         List<Category> category = productDAO.getCategory();
@@ -183,6 +184,7 @@ public class ProductServlet extends HttpServlet {
         request.setAttribute("ProductData", product);
         request.getRequestDispatcher("/shop_category.jsp").forward(request, response);
     }
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -197,6 +199,7 @@ public class ProductServlet extends HttpServlet {
             default:
         }
     }
+
     private void searchProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String text = request.getParameter("text");
         List<Product> productList = productDAO.SearchAll(text);
@@ -220,6 +223,7 @@ public class ProductServlet extends HttpServlet {
         request.setAttribute("ProductData", product);
         request.getRequestDispatcher("/shop_category.jsp").forward(request, response);
     }
+
     @Override
     public void destroy() {
 

@@ -1,4 +1,4 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="UTF-8" %>
 
 <footer class="footer_widgets">
     <div class="footer_top">
@@ -9,7 +9,7 @@
                         <h3>Liên hệ chúng tôi</h3>
                         <div class="footer_contact">
                             <p>Address: Số nhà 28, đường Nguyễn Tri Phương , Thành phố Huế</p>
-                            <p>Phone: <a href="tel:+(+84)932555266">(+84) 932555266</a> </p>
+                            <p>Phone: <a href="tel:+(+84)932555266">(+84) 932555266</a></p>
                             <p>Email: <a href="mailto:hacongbang174@gmail.com">hacongbang174@gmail.com</a></p>
                             <ul>
                                 <li><a href="#" title="Twitter"><i class="fa fa-twitter"></i></a></li>
@@ -27,8 +27,10 @@
                         <div class="newleter-content">
                             <p>Chất lượng tạo nên thương hiệu !</p>
                             <div class="subscribe_form">
-                                <form id="mc-form" class="mc-form footer-newsletter" method="GET" action="https://script.google.com/macros/s/AKfycby2HoMCJyTeclcs-4VlInS-NG_hs161qiMTiuzUOpNZp_YRsmk/exec">
-                                    <input id="mc-email" type="email" name="EmailInfomation" autocomplete="off" placeholder="Enter you email address here..." />
+                                <form id="mc-form" class="mc-form footer-newsletter" method="GET"
+                                      action="https://script.google.com/macros/s/AKfycby2HoMCJyTeclcs-4VlInS-NG_hs161qiMTiuzUOpNZp_YRsmk/exec">
+                                    <input id="mc-email" type="email" name="EmailInfomation" autocomplete="off"
+                                           placeholder="Enter you email address here..."/>
                                     <button type="submit" id="mc-submit">Đăng ký</button>
                                 </form>
                                 <!-- mailchimp-alerts Start -->

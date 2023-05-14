@@ -13,6 +13,7 @@ public class DBContext {
     private String jdbcURL = "jdbc:mysql://localhost:3306/shop_m3?allowPublicKeyRetrieval=true&useSSL=false";
     private String jdbcUsername = "root";
     private String jdbcPassword = "Anhvanmo.123";
+
     public Connection getConnection() throws Exception {
         Connection connection = null;
         try {
@@ -27,6 +28,7 @@ public class DBContext {
         }
         return connection;
     }
+
     public void printSQLException(SQLException ex) {
         for (Throwable e : ex) {
             if (e instanceof SQLException) {

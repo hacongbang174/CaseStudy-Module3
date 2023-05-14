@@ -1,179 +1,189 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!doctype html>
 <html class="no-js" lang="en">
 
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Giỏ hàng</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- Favicon -->
-        <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Giỏ hàng</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
 
-        <!-- CSS 
-        ========================= -->
-        <!-- Plugins CSS -->
-        <link rel="stylesheet" href="assets/css/plugins.css">
-        <!-- Main Style CSS -->
-        <link rel="stylesheet" href="assets/css/style.css">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.7.5/sweetalert2.all.min.js" integrity="sha512-2JsZvEefv9GpLmJNnSW3w/hYlXEdvCCfDc+Rv7ExMFHV9JNlJ2jaM+uVVlCI1MAQMkUG8K83LhsHYx1Fr2+MuA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    </head>
+    <!-- CSS
+    ========================= -->
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="assets/css/plugins.css">
+    <!-- Main Style CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.7.5/sweetalert2.all.min.js"
+            integrity="sha512-2JsZvEefv9GpLmJNnSW3w/hYlXEdvCCfDc+Rv7ExMFHV9JNlJ2jaM+uVVlCI1MAQMkUG8K83LhsHYx1Fr2+MuA=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
 
-    <body>
+<body>
 
-        <!-- Main Wrapper Start -->
-        <!--Offcanvas menu area start-->
-        <div class="off_canvars_overlay"></div>
-        <jsp:include page="layout/menu.jsp"/>
-        <!--breadcrumbs area start-->
-        <div class="breadcrumbs_area other_bread">
-            <div class="container">   
-                <div class="row">
-                    <div class="col-12">
-                        <div class="breadcrumb_content">
-                            <ul>
-                                <li><a href="index.html">Trang chủ</a></li>
-                                <li>/</li>
-                                <li>Giỏ hàng</li>
-                            </ul>
+<!-- Main Wrapper Start -->
+<!--Offcanvas menu area start-->
+<div class="off_canvars_overlay"></div>
+<jsp:include page="layout/menu.jsp"/>
+<!--breadcrumbs area start-->
+<div class="breadcrumbs_area other_bread">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="breadcrumb_content">
+                    <ul>
+                        <li><a href="index.html">Trang chủ</a></li>
+                        <li>/</li>
+                        <li>Giỏ hàng</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--breadcrumbs area end-->
+
+<!-- shopping cart area start -->
+<div class="shopping_cart_area">
+    <div class="container">
+        <form id="frmDelete" action="cart?action=deleteProduct" method="post">
+            <input id="txtId" name="txtId" type="hidden"/>
+        </form>
+        <form>
+            <div class="row">
+                <div class="col-12">
+                    <div class="table_desc">
+                        <div class="cart_page table-responsive">
+                            <table>
+                                <thead>
+                                <c:if test="${sessionScope.cart == null}">
+                                    <th class="d-flex justify-content-center">Giỏ hàng trống</th>
+                                </c:if>
+                                <c:if test="${sessionScope.cart != null}">
+                                    <tr>
+                                        <th class="product_remove">Delete</th>
+                                        <th class="product_thumb">Image</th>
+                                        <th class="product_name">Product</th>
+                                        <th class="product-price">Price</th>
+                                        <th class="product_quantity">Size</th>
+                                        <th class="product-price">Color</th>
+                                        <th class="product_quantity">Quantity</th>
+                                        <th class="product_total">Total</th>
+                                    </tr>
+                                </c:if>
+
+                                </thead>
+                                <tbody>
+                                <c:set var="o" value="${sessionScope.cart}"/>
+                                <c:forEach items="${o.items}" var="i">
+                                    <tr>
+                                        <td class="product_remove"><a href="javascript:;"
+                                                                      onclick="handleDelete('${i.product.getProduct_id()}')"><i
+                                                class="fa fa-trash-o"></i></a></td>
+                                        <td class="product_thumb"><a
+                                                href="product?action=productDetail&product_id=${i.product.getProduct_id()}"><img
+                                                src="${i.product.getImg()}" alt=""></a></td>
+                                        <td class="product_name"><a
+                                                href="product?action=productDetail&product_id=${i.product.getProduct_id()}">${i.product.getProduct_name()}</a>
+                                        </td>
+                                        <td class="product-price">${i.product.getProductPrice(i.product.getProduct_price())}</td>
+                                        <td class="product-price">${i.getSize()}</td>
+                                        <td class="product-price">${i.getColor()}</td>
+                                        <td class="product_quantity"><input name="quantity" min="1" max="100"
+                                                                            value="${i.getQuantity()}" type="number">
+                                        </td>
+                                        <td class="product_total">${i.product.getProductPrice(i.product.getProduct_price() * i.getQuantity())}</td>
+                                    </tr>
+                                </c:forEach>
+                                </tbody>
+                            </table>
                         </div>
+                        <!--                                <div class="cart_submit">
+                                                            <button type="submit">update cart</button>
+                                                        </div> -->
                     </div>
                 </div>
-            </div>         
-        </div>
-        <!--breadcrumbs area end-->
+            </div>
 
-        <!-- shopping cart area start -->
-        <div class="shopping_cart_area">
-            <div class="container">
-                <form  id="frmDelete" action="cart?action=deleteProduct" method="post">
-                    <input id="txtId" name="txtId" type="hidden" />
-                </form>
-                <form>
+            <!--coupon code area start-->
+            <c:if test="${sessionScope.cart!=null}">
+                <div class="coupon_area">
                     <div class="row">
-                        <div class="col-12">
-                            <div class="table_desc">
-                                <div class="cart_page table-responsive">
-                                    <table>
-                                        <thead>
-                                        <c:if test="${sessionScope.cart == null}">
-                                            <th class="d-flex justify-content-center">Giỏ hàng trống</th>
-                                        </c:if>
-                                        <c:if test="${sessionScope.cart != null}">
-                                            <tr>
-                                                <th class="product_remove">Delete</th>
-                                                <th class="product_thumb">Image</th>
-                                                <th class="product_name">Product</th>
-                                                <th class="product-price">Price</th>
-                                                <th class="product_quantity">Size</th>
-                                                <th class="product-price">Color</th>
-                                                <th class="product_quantity">Quantity</th>
-                                                <th class="product_total">Total</th>
-                                            </tr>
-                                        </c:if>
+                        <div class="col-lg-12 col-md-12">
+                            <div class="coupon_code right">
+                                <h3>Hóa đơn</h3>
+                                <div class="coupon_inner">
+                                    <div class="cart_subtotal">
+                                        <p>Tổng đơn hàng</p>
+                                        <p class="cart_amount">${sessionScope.cart.getBillDetailPrice(sessionScope.total)}</p>
+                                    </div>
+                                    <div class="cart_subtotal ">
+                                        <p>Phí ship (Trợ giá 63 tỉnh thành)</p>
+                                        <p class="cart_amount">${sessionScope.cart.getBillDetailPrice(sessionScope.surcharge)}</p>
+                                    </div>
 
-                                        </thead>
-                                        <tbody>
-                                            <c:set var="o" value="${sessionScope.cart}"/>
-                                            <c:forEach items="${o.items}" var="i">
-                                                <tr>
-                                                    <td class="product_remove"><a href="javascript:;" onclick="handleDelete('${i.product.getProduct_id()}')"><i class="fa fa-trash-o"></i></a></td>
-                                                    <td class="product_thumb"><a href="product?action=productDetail&product_id=${i.product.getProduct_id()}"><img src="${i.product.getImg()}" alt=""></a></td>
-                                                    <td class="product_name"><a href="product?action=productDetail&product_id=${i.product.getProduct_id()}">${i.product.getProduct_name()}</a></td>
-                                                    <td class="product-price">${i.product.getProductPrice(i.product.getProduct_price())}</td>
-                                                    <td class="product-price">${i.getSize()}</td>
-                                                    <td class="product-price">${i.getColor()}</td>
-                                                    <td class="product_quantity"><input name="quantity" min="1" max="100" value="${i.getQuantity()}" type="number"></td>
-                                                    <td class="product_total">${i.product.getProductPrice(i.product.getProduct_price() * i.getQuantity())}</td>
-                                                </tr>
-                                            </c:forEach>
-                                        </tbody>
-                                    </table>   
-                                </div> 
-<!--                                <div class="cart_submit">
-                                    <button type="submit">update cart</button>
-                                </div> -->
-                            </div>
-                        </div>
-                    </div>
-
-                    <!--coupon code area start-->
-                    <c:if test="${sessionScope.cart!=null}">
-                    <div class="coupon_area">
-                        <div class="row">
-                            <div class="col-lg-12 col-md-12">
-                                <div class="coupon_code right">
-                                    <h3>Hóa đơn</h3>
-                                    <div class="coupon_inner">
-                                        <div class="cart_subtotal">
-                                            <p>Tổng đơn hàng</p>
-                                            <p class="cart_amount">${sessionScope.cart.getBillDetailPrice(sessionScope.total)}</p>
-                                        </div>
-                                        <div class="cart_subtotal ">
-                                            <p>Phí ship (Trợ giá 63 tỉnh thành)</p>
-                                            <p class="cart_amount">${sessionScope.cart.getBillDetailPrice(sessionScope.surcharge)}</p>
-                                        </div>
-
-                                        <div class="cart_subtotal">
-                                            <p>Total</p>
-                                            <p class="cart_amount">${sessionScope.cart.getBillDetailPrice(sessionScope.total + sessionScope.surcharge)}</p>
-                                        </div>
-                                        <div class="checkout_btn">
-                                            <a href="checkout">Thanh toán</a>
-                                        </div>
+                                    <div class="cart_subtotal">
+                                        <p>Total</p>
+                                        <p class="cart_amount">${sessionScope.cart.getBillDetailPrice(sessionScope.total + sessionScope.surcharge)}</p>
+                                    </div>
+                                    <div class="checkout_btn">
+                                        <a href="checkout">Thanh toán</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    </c:if>
-                    <!--coupon code area end-->
-                </form> 
-            </div>     
-        </div>
-        <!-- shopping cart area end -->
+                </div>
+            </c:if>
+            <!--coupon code area end-->
+        </form>
+    </div>
+</div>
+<!-- shopping cart area end -->
 
-        <!--footer area start-->
-        <jsp:include page="layout/footer.jsp"/>
-        <!--footer area end-->
+<!--footer area start-->
+<jsp:include page="layout/footer.jsp"/>
+<!--footer area end-->
 
-        <!-- JS
-        ============================================ -->
-
-
-        <!--map js code here-->
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAdWLY_Y6FL7QGW5vcO3zajUEsrKfQPNzI"></script>
-        <script  src="https://www.google.com/jsapi"></script>
-        <script src="assets/js/map.js"></script>
+<!-- JS
+============================================ -->
 
 
-        <!-- Plugins JS -->
-        <script src="assets/js/plugins.js"></script>
+<!--map js code here-->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAdWLY_Y6FL7QGW5vcO3zajUEsrKfQPNzI"></script>
+<script src="https://www.google.com/jsapi"></script>
+<script src="assets/js/map.js"></script>
 
-        <!-- Main JS -->
-        <script src="assets/js/main.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-        <script>
-            function handleDelete(id){
-                document.getElementById("txtId").value = id;
-                Swal.fire({
-                    title: 'Bạn có muốn xóa hay không?',
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yes!'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        document.getElementById("frmDelete").submit();
-                    }
-                })
+
+<!-- Plugins JS -->
+<script src="assets/js/plugins.js"></script>
+
+<!-- Main JS -->
+<script src="assets/js/main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script>
+    function handleDelete(id) {
+        document.getElementById("txtId").value = id;
+        Swal.fire({
+            title: 'Bạn có muốn xóa hay không?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById("frmDelete").submit();
             }
-        </script>
+        })
+    }
+</script>
 
-    </body>
+</body>
 
 </html>

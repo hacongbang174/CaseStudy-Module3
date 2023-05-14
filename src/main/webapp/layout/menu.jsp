@@ -1,6 +1,6 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
 <div class="offcanvas_menu">
     <div class="canvas_open">
@@ -8,11 +8,11 @@
     </div>
     <div class="offcanvas_menu_wrapper">
         <div class="canvas_close">
-            <a href="javascript:void(0)"><i class="ion-android-close"></i></a>  
+            <a href="javascript:void(0)"><i class="ion-android-close"></i></a>
         </div>
         <div class="welcome_text">
             <ul>
-                <li><span>Giao hàng miễn phí: </span> Hãy tận dụng thời gian của chúng tôi để lưu lại sự kiện </li>
+                <li><span>Giao hàng miễn phí: </span> Hãy tận dụng thời gian của chúng tôi để lưu lại sự kiện</li>
                 <li><span>Trả hàng miễn phí: </span> Đảm bảo sự hài lòng</li>
             </ul>
         </div>
@@ -22,27 +22,27 @@
                     <ul class="dropdown_links">
                         <c:if test="${sessionScope.user.user_name!=null}">
                             <li><a href="my-account.html">${sessionScope.user.user_name}</a></li>
-                            </c:if>
+                        </c:if>
 
                         <c:if test="${sessionScope.user.user_name == null}">
                             <li><a href="user?action=myAccount">Tài khoản của tôi</a></li>
-                            </c:if>
+                        </c:if>
 
                         <c:if test="${sessionScope.user == null}">
                             <li><a href="user?action=login">Đăng nhập</a></li>
-                            </c:if>
+                        </c:if>
 
                         <c:if test="${sessionScope.user != null}">
                             <li><a href="user?action=login">Đăng xuất</a></li>
-                            </c:if>
+                        </c:if>
 
                         <c:if test="${fn: toUpperCase(sessionScope.user.role) == 'true'}">
                             <li><a href="dashboard">Quản lý</a></li>
-                            </c:if>
+                        </c:if>
                     </ul>
-                </li> 
+                </li>
             </ul>
-        </div> 
+        </div>
         <div class="search_bar">
             <form action="product?action=search" method="POST">
                 <input name="text" placeholder="Tìm kiếm..." type="text">
@@ -66,7 +66,7 @@
                     <a href="about">Chúng tôi</a>
                 </li>
                 <li class="menu-item-has-children">
-                    <a href="contact">Liên hệ</a> 
+                    <a href="contact">Liên hệ</a>
                 </li>
             </ul>
         </div>
@@ -88,12 +88,13 @@
 <header class="header_area header_three">
     <!--header top start-->
     <div class="header_top">
-        <div class="container-fluid">   
+        <div class="container-fluid">
             <div class="row align-items-center">
                 <div class="col-lg-7 col-md-12">
                     <div class="welcome_text">
                         <ul>
-                            <li><span>Giao hàng miễn phí:</span>Hãy tận dụng thời gian của chúng tôi để lưu lại sự kiện </li>
+                            <li><span>Giao hàng miễn phí:</span>Hãy tận dụng thời gian của chúng tôi để lưu lại sự kiện
+                            </li>
                             <li><span>Trả hàng miễn phí</span> Đảm bảo sự hài lòng</li>
                         </ul>
                     </div>
@@ -103,32 +104,33 @@
                         <ul>
 
                             <c:if test="${sessionScope.user != null}">
-                                <li class="top_links"><a href="#">Xin chào ${sessionScope.user.user_name}<i class="ion-chevron-down"></i></a>
-                                    </c:if>
-                                    <c:if test="${sessionScope.user == null}">
-                                <li class="top_links"><a href="#">Đăng nhập<i class="ion-chevron-down"></i></a>
-                                    </c:if>
+                            <li class="top_links"><a href="#">Xin chào ${sessionScope.user.user_name}<i
+                                    class="ion-chevron-down"></i></a>
+                                </c:if>
+                                <c:if test="${sessionScope.user == null}">
+                            <li class="top_links"><a href="#">Đăng nhập<i class="ion-chevron-down"></i></a>
+                                </c:if>
                                 <ul class="dropdown_links">
                                     <c:if test="${sessionScope.user != null}">
                                         <li><a href="user?action=myAccount">Tài khoản của tôi</a></li>
-                                        </c:if>
+                                    </c:if>
 
                                     <c:if test="${fn: toUpperCase(sessionScope.user.role) == 'TRUE'}">
                                         <li><a href="dashboard">Quản lý</a></li>
-                                        </c:if>
+                                    </c:if>
 
                                     <c:if test="${sessionScope.user == null}">
                                         <li><a href="user?action=login">Đăng nhập</a></li>
                                         <li><a href="user?action=signup">Đăng ký</a></li>
-                                        </c:if>
+                                    </c:if>
 
                                     <c:if test="${sessionScope.user != null}">
                                         <li><a href="user?action=logout">Đăng xuất</a></li>
-                                        </c:if>
+                                    </c:if>
                                 </ul>
-                            </li> 
+                            </li>
                         </ul>
-                    </div>   
+                    </div>
                 </div>
             </div>
         </div>
@@ -156,7 +158,8 @@
                     <div class="col-lg-4">
                         <div class="cart_area">
                             <div class="cart_link">
-                                <a href="cart?action=showCart"><i class="fa fa-shopping-basket"></i>${sessionScope.size} sản phẩm</a>
+                                <a href="cart?action=showCart"><i class="fa fa-shopping-basket"></i>${sessionScope.size}
+                                    sản phẩm</a>
                             </div>
                         </div>
                     </div>
@@ -164,25 +167,25 @@
             </div>
             <div class="horizontal_menu">
                 <div class="left_menu">
-                    <div class="main_menu"> 
-                        <nav>  
+                    <div class="main_menu">
+                        <nav>
                             <ul>
                                 <li><a href="home">Trang chủ<i class="fa"></i></a>
                                 </li>
                                 <li class="mega_items"><a href="product">Sản phẩm</a>
                                 </li>
-                            </ul> 
-                        </nav> 
+                            </ul>
+                        </nav>
                     </div>
                 </div>
                 <div class="right_menu">
-                    <div class="main_menu"> 
-                        <nav>  
+                    <div class="main_menu">
+                        <nav>
                             <ul>
                                 <li><a href="about">Chúng tôi</a></li>
                                 <li><a href="contact">Liên hệ</a></li>
-                            </ul> 
-                        </nav> 
+                            </ul>
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -196,17 +199,17 @@
             <div class="row align-items-center">
                 <div class="col-12">
                     <div class="main_menu_inner">
-                        <div class="main_menu"> 
-                            <nav>  
+                        <div class="main_menu">
+                            <nav>
                                 <ul>
                                     <li class="active"><a href="home">Trang chủ</a></li>
                                     <li><a href="product">Sản phẩm</a></li>
                                     <li><a href="about">Chúng tôi</a></li>
                                     <li><a href="contact">Liên hệ</a></li>
-                                </ul>   
-                            </nav> 
+                                </ul>
+                            </nav>
                         </div>
-                    </div> 
+                    </div>
                 </div>
             </div>
         </div>

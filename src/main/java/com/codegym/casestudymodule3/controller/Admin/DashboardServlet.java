@@ -18,6 +18,7 @@ import java.util.List;
 public class DashboardServlet extends HttpServlet {
     private ProductDAO productDAO;
     private BillDAO billDAO;
+
     @Override
     public void init() throws ServletException {
         productDAO = new ProductDAO();
@@ -49,6 +50,7 @@ public class DashboardServlet extends HttpServlet {
         }
 
     }
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         processRequest(request, response);

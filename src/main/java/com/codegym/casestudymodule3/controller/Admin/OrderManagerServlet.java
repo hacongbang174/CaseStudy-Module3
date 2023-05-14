@@ -16,14 +16,11 @@ import java.util.List;
 
 @WebServlet(name = "orderManagerServlet", urlPatterns = "/orderManager")
 public class OrderManagerServlet extends HttpServlet {
-    private ProductDAO productDAO;
     private BillDAO billDAO;
-    private UserDAO userDAO;
+
     @Override
     public void init() throws ServletException {
-        productDAO = new ProductDAO();
         billDAO = new BillDAO();
-        userDAO = new UserDAO();
     }
 
     @Override
@@ -68,6 +65,7 @@ public class OrderManagerServlet extends HttpServlet {
         }
 
     }
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

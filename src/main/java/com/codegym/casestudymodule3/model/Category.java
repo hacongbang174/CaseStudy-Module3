@@ -15,13 +15,13 @@ public class Category {
         this.category_id = category_id;
         this.category_name = category_name;
     }
-    
+
     public Category(String category_name) {
         this.category_name = category_name;
     }
-    
+
     public Category(int category_id) {
-       this.category_id = category_id;
+        this.category_id = category_id;
     }
 
     public int getCategoryID() {

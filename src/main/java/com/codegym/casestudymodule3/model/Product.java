@@ -30,7 +30,7 @@ public class Product {
         this.quantity = quantity;
         this.img = img;
     }
-    
+
     public Product(String product_id, String product_name, Float product_price, String product_describe, int quantity, String img) {
         this.product_id = product_id;
         this.product_name = product_name;
@@ -39,7 +39,7 @@ public class Product {
         this.quantity = quantity;
         this.img = img;
     }
-    
+
     public Product(String product_id, String product_name, String img) {
         this.product_id = product_id;
         this.product_name = product_name;
@@ -118,9 +118,9 @@ public class Product {
         this.color = color;
     }
 
-   public String getProductPrice(double price) {
+    public String getProductPrice(double price) {
         String priceNew = CurrencyFormat.covertPriceToString(price);
         return priceNew;
-   }
-        
+    }
+
 }
