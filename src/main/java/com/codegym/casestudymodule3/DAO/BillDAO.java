@@ -160,5 +160,35 @@ public class BillDAO {
         }
         return list;
     }
-
+    public double revenue() {
+        double revenue = 0;
+        String sql = "select sum(total) from bill;";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                revenue = Double.parseDouble(rs.getString(1));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return revenue;
+    }
+    public double revenueByMonth(int month) {
+        double revenue = 0;
+        String sql = "select sum(total) from bill where month(createDate) = ?;";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, month);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                revenue = Double.parseDouble(rs.getString(1));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return revenue;
+    }
 }

@@ -4,6 +4,7 @@ import com.codegym.casestudymodule3.DAO.BillDAO;
 import com.codegym.casestudymodule3.DAO.ProductDAO;
 import com.codegym.casestudymodule3.model.Bill;
 import com.codegym.casestudymodule3.model.User;
+import com.codegym.casestudymodule3.utils.CurrencyFormat;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -35,11 +36,13 @@ public class DashboardServlet extends HttpServlet {
                 int countuser = productDAO.CountUser();
                 int countbill = productDAO.CountBill();
                 int countproductlow = productDAO.CountProductLow();
+                String revenue = CurrencyFormat.covertPriceToString(billDAO.revenue());
                 List<Bill> billbyday = billDAO.getBillByDay();
                 request.setAttribute("product", count);
                 request.setAttribute("user", countuser);
                 request.setAttribute("bill", countbill);
                 request.setAttribute("low", countproductlow);
+                request.setAttribute("revenue", revenue);
                 request.setAttribute("billbyday", billbyday);
                 request.getRequestDispatcher("/admin/index.jsp").forward(request, response);
             } else {

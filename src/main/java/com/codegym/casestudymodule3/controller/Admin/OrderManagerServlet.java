@@ -46,7 +46,7 @@ public class OrderManagerServlet extends HttpServlet {
         int id = Integer.parseInt(bill_id);
         List<BillDetail> detail = billDAO.getDetail(id);
         request.setAttribute("detail", detail);
-        request.getRequestDispatcher("admin/orderdetail.jsp").forward(request, response);
+        request.getRequestDispatcher("admin/orderDetail.jsp").forward(request, response);
     }
 
     private void showOrder(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -16,14 +16,11 @@ import java.util.List;
 
 @WebServlet(name = "customerManagerServlet", urlPatterns = "/customerManager")
 public class CustomerManagerServlet extends HttpServlet {
-    private ProductDAO productDAO;
-    private BillDAO billDAO;
     private UserDAO userDAO;
 
     @Override
     public void init() throws ServletException {
-        productDAO = new ProductDAO();
-        billDAO = new BillDAO();
+
         userDAO = new UserDAO();
     }
 
@@ -35,7 +32,6 @@ public class CustomerManagerServlet extends HttpServlet {
         try {
             HttpSession session = request.getSession();
             User user = (User) session.getAttribute("user");
-            String action = request.getParameter("action");
             if (user.getRole().equalsIgnoreCase("true")) {
                 List<User> user1 = userDAO.getUser();
                 request.setAttribute("user", user1);

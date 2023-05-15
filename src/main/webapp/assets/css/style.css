@@ -8410,7 +8410,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 .product_d_right .product_price span.current_price {
     color: #242424;
     font-size: 13px;
-    font-weight: 500;
+    font-weight: 1000;
 }
 .single_product .product_content h3,span.current_price{
     display: flex;

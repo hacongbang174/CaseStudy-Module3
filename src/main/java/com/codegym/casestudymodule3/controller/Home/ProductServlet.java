@@ -88,7 +88,7 @@ public class ProductServlet extends HttpServlet {
         request.setAttribute("num", num);
         request.setAttribute("CategoryData", category);
         request.setAttribute("ProductData", product);
-        request.getRequestDispatcher("/shop_category.jsp").forward(request, response);
+        request.getRequestDispatcher("/shop_product.jsp").forward(request, response);
     }
 
     private void showlistByCategory(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -113,7 +113,7 @@ public class ProductServlet extends HttpServlet {
         request.setAttribute("num", num);
         request.setAttribute("CategoryData", category);
         request.setAttribute("ProductData", product);
-        request.getRequestDispatcher("/shop_category.jsp").forward(request, response);
+        request.getRequestDispatcher("/shop_product.jsp").forward(request, response);
     }
 
     private void showSortProductByName(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -136,7 +136,7 @@ public class ProductServlet extends HttpServlet {
         request.setAttribute("num", num);
         request.setAttribute("CategoryData", category);
         request.setAttribute("ProductData", product);
-        request.getRequestDispatcher("/shop_category.jsp").forward(request, response);
+        request.getRequestDispatcher("/shop_product.jsp").forward(request, response);
     }
 
     private void showSortProductByPriceAsc(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -159,7 +159,7 @@ public class ProductServlet extends HttpServlet {
         request.setAttribute("num", num);
         request.setAttribute("CategoryData", category);
         request.setAttribute("ProductData", product);
-        request.getRequestDispatcher("/shop_category.jsp").forward(request, response);
+        request.getRequestDispatcher("/shop_product.jsp").forward(request, response);
     }
 
     private void showSortProductByPriceDesc(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -182,7 +182,7 @@ public class ProductServlet extends HttpServlet {
         request.setAttribute("num", num);
         request.setAttribute("CategoryData", category);
         request.setAttribute("ProductData", product);
-        request.getRequestDispatcher("/shop_category.jsp").forward(request, response);
+        request.getRequestDispatcher("/shop_product.jsp").forward(request, response);
     }
 
     @Override
@@ -221,7 +221,7 @@ public class ProductServlet extends HttpServlet {
         request.setAttribute("num", num);
         request.setAttribute("CategoryData", category);
         request.setAttribute("ProductData", product);
-        request.getRequestDispatcher("/shop_category.jsp").forward(request, response);
+        request.getRequestDispatcher("/shop_product.jsp").forward(request, response);
     }
 
     @Override

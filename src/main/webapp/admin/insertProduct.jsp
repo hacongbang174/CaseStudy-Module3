@@ -22,6 +22,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.7.5/sweetalert2.all.min.js"
             integrity="sha512-2JsZvEefv9GpLmJNnSW3w/hYlXEdvCCfDc+Rv7ExMFHV9JNlJ2jaM+uVVlCI1MAQMkUG8K83LhsHYx1Fr2+MuA=="
             crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+          integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
 
     <c:if test="${requestScope.message !=null}">
         <script>
@@ -185,6 +188,12 @@
         </li>
         <li><a class="app-menu__item" href="orderManager"><i class='app-menu__icon bx bx-task'></i><span
                 class="app-menu__label">Quản lý đơn hàng</span></a></li>
+        <li><a class="app-menu__item" href="revenueManager"><i class='app-menu__icon fa-solid fa-sack-dollar'></i><span
+                class="app-menu__label">Quản lý doanh thu</span></a></li>
+        <li><a class="app-menu__item"
+               href="https://docs.google.com/spreadsheets/d/1elWy0LYj9ngbmywMGwy8Noe_K7WmyisQ6aHOK6RnXZI"
+               target="_blank"><i class='app-menu__icon bx bx-task'></i><span
+                class="app-menu__label">Kiểm tra phản hồi</span></a></li>
     </ul>
 </aside>
 <main class="app-content">

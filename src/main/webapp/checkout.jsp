@@ -128,13 +128,6 @@
                                                                                  alt=""></label>
                                     </div>
                                     <div class="panel-default">
-                                        <input id="payment_defult" value="vnpay" name="payment_method" type="radio"
-                                               data-target="createp_account" />
-                                        <label for="payment_defult" data-toggle="collapse" data-target="#collapsedefult"
-                                               aria-controls="collapsedefult">VN Pay <img src="assets/img/icon/papyel.png"
-                                                                                   alt=""></label>
-                                    </div>
-                                    <div class="panel-default">
                                         <input id="payment_defult" value="cod" name="payment_method" type="radio"
                                                data-target="createp_account" />
                                         <label for="payment_defult" data-toggle="collapse" data-target="#collapsedefult"

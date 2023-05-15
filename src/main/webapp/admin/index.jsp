@@ -60,7 +60,7 @@
         </li>
         <li><a class="app-menu__item" href="orderManager"><i class='app-menu__icon bx bx-task'></i><span
                 class="app-menu__label">Quản lý đơn hàng</span></a></li>
-        <li><a class="app-menu__item" href="#"><i class='app-menu__icon fa-solid fa-sack-dollar'></i><span
+        <li><a class="app-menu__item" href="revenueManager"><i class='app-menu__icon fa-solid fa-sack-dollar'></i><span
                 class="app-menu__label">Quản lý doanh thu</span></a></li>
         <li><a class="app-menu__item"
                href="https://docs.google.com/spreadsheets/d/1elWy0LYj9ngbmywMGwy8Noe_K7WmyisQ6aHOK6RnXZI"
@@ -109,7 +109,7 @@
                     <div class="widget-small warning coloured-icon"><i class='icon bx bxs-shopping-bags fa-3x'></i>
                         <div class="info">
                             <h4>
-                                <a href="customerManager">Tổng đơn hàng</a>
+                                <a href="orderManager">Tổng đơn hàng</a>
                             </h4>
                             <p><b>${requestScope.bill} đơn hàng</b></p>
                             <p class="info-tong">Tổng số hóa đơn bán hàng trong tháng.</p>
@@ -124,6 +124,18 @@
                                 <a href="/productManager?action=productLow">Sắp hết hàng</a>
                             </h4>
                             <p><b>${requestScope.low} sản phẩm</b></p>
+                            <p class="info-tong">Số sản phẩm cảnh báo hết cần nhập thêm.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- col-6 -->
+                <div class="col-md-6">
+                    <div class="widget-small info coloured-icon"><i class='icon bx bxs-data fa-3x'></i>
+                        <div class="info">
+                            <h4>
+                                <a href="revenueManager">Tổng doanh thu</a>
+                            </h4>
+                            <p><b>${requestScope.revenue}</b></p>
                             <p class="info-tong">Số sản phẩm cảnh báo hết cần nhập thêm.</p>
                         </div>
                     </div>

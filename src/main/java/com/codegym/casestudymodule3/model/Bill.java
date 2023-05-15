@@ -3,6 +3,7 @@ package com.codegym.casestudymodule3.model;
 import com.codegym.casestudymodule3.utils.CurrencyFormat;
 
 import java.sql.Date;
+import java.util.Calendar;
 
 public class Bill {
     int bill_id;
@@ -25,13 +26,13 @@ public class Bill {
         this.createDate = date;
         this.phone = phone;
     }
-    
-    public Bill(int bill_id,double total,Date date) {
+
+    public Bill(int bill_id, double total, Date date) {
         this.bill_id = bill_id;
         this.total = total;
         this.createDate = date;
     }
-    
+
     public Bill(int bill_id, double total, String payment, String address, Date date, String phone) {
         this.bill_id = bill_id;
         this.total = total;
@@ -96,9 +97,14 @@ public class Bill {
     public void setPhone(String phone) {
         this.phone = phone;
     }
+
     public String getBillTotal(double total) {
         String totalNew = CurrencyFormat.covertPriceToString(total);
         return totalNew;
     }
-
+    public int getMonthFromDate(Date date) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        return calendar.get(Calendar.MONTH) + 1; // Tháng trong Calendar được đánh số từ 0 đến 11, nên cần cộng 1.
+    }
 }

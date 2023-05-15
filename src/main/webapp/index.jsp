@@ -115,23 +115,23 @@
         <div class="product_area">
             <div class="row">
                 <div class="product_carousel product_three_column4 owl-carousel">
-                    <c:forEach items="${top10}" var="top10">
+                    <c:forEach items="${requestScope.top10}" var="top10">
                         <div class="col-lg-3">
                             <div class="single_product">
                                 <div class="product_thumb">
                                     <a class="primary_img"
-                                       href="product?action=productdetail&product_id=${top10.product_id}"><img
-                                            src="${top10.img}" width="10px;" alt=""></a>
+                                       href="product?action=productDetail&product_id=${top10.getProduct_id()}"><img
+                                            src="${top10.getImg()}" width="10px;" alt=""></a>
                                     <div class="quick_button">
-                                        <a href="product?action=productdetail&product_id=${top10.product_id}"
+                                        <a href="product?action=productDetail&product_id=${top10.getProduct_id()}"
                                            title="quick_view">Xem sản phẩm</a>
                                     </div>
                                 </div>
                                 <div class="product_content">
                                     <h3>
-                                        <a href="product?action=productdetail&product_id=${top10.product_id}">${top10.product_name}</a>
+                                        <a href="product?action=productDetail&product_id=${top10.getProduct_id()}">${top10.getProduct_name()}</a>
                                     </h3>
-                                    <span class="current_price">${top10.product_price}đ</span>
+                                    <span class="current_price">${top10.getProductPrice(top10.getProduct_price())}</span>
                                 </div>
                             </div>
                         </div>
@@ -186,23 +186,23 @@
         <div class="product_area">
             <div class="row">
                 <div class="product_carousel product_three_column4 owl-carousel">
-                    <c:forEach items="${topTrend}" var="td">
+                    <c:forEach items="${requestScope.topTrend}" var="td">
                         <div class="col-lg-3">
                             <div class="single_product">
                                 <div class="product_thumb">
                                     <a class="primary_img"
-                                       href="product?action=productdetail&product_id=${td.product_id}"><img
-                                            src="${td.img}" width="10px;" alt=""></a>
+                                       href="product?action=productDetail&product_id=${td.getProduct_id()}"><img
+                                            src="${td.getImg()}" width="10px;" alt=""></a>
                                     <div class="quick_button">
-                                        <a href="product?action=productdetail&product_id=${td.product_id}"
+                                        <a href="product?action=productDetail&product_id=${td.getProduct_id()}"
                                            title="quick_view">Xem sản phẩm</a>
                                     </div>
                                 </div>
                                 <div class="product_content">
                                     <h3>
-                                        <a href="product?action=productdetail&product_id=${td.product_id}">${td.product_name}</a>
+                                        <a href="product?action=productDetail&product_id=${td.getProduct_id()}">${td.getProduct_name()}</a>
                                     </h3>
-                                    <span class="current_price">${td.product_price}đ</span>
+                                    <span class="current_price">${td.getProductPrice(td.getProduct_price())}</span>
                                 </div>
                             </div>
                         </div>

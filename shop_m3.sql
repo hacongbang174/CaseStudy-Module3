@@ -34,19 +34,17 @@ CREATE TABLE product (
 );
 
 INSERT product (product_id, category_id, product_name, product_price, product_describe, quantity, img) 
-VALUES ('AT533', 2, 'Champion Graphic Big Logo T-Shirt', 149000.0, 'Cổ Tròn, Vạt Ngang, Tay Ngắn, Hình In Trước', 186, 'images/AT533.png'),
-('AT536', 2, 'Champion Change The World', 139000.0, 'Cổ Tròn, Vạt Ngang, Tay Ngắn, Hình Thêu Trước', 410, 'images/AT536.png'),
-('T2099', 2, 'No Smile Tee Purple', 189000.0, 'Cổ Tròn, Tay Ngắn, Vạt Ngang, Hình Phía Trước Và Sau', 49, 'images/T2099.png'),
-('T2106', 2, 'Shin-chan Tee', 229000.0, 'Cổ Tròn, Tay Ngắn, Vạt Ngang, Hình In Trước', 95, 'images/T2106.png'),
-('T2109', 2, 'Tie Dye Orange Mint Tee', 290000.0, 'Cổ Tròn , Tay Ngắn, Vạt Ngang, Hình In Trước Và Sau, Tie Tye', 75, 'images/T2109.png'),
-('T2119', 2, 'The Sun Tie Dye', 280000.0, 'Cổ Tròn,  Tay Ngắn, Vạt Ngang, Hình In Trước Và Sau, Tie Tye', 82, 'images/T2119.png'),
-('T2127', 2, 'Fucking Awesome Tee In Black', 259000.0, 'Cổ Tròn, Tay Ngắn, Vạt Ngang, Hình Phía Trước Và Sau', 94, 'images/T2127.png'),
-('T2128', 2, 'Fucking Awesome Tee', 259000.0, 'Cổ Tròn , Tay Ngắn, Vạt Ngang, Hình Phía Trước Và Sau', 62, 'images/T2128.png'),
-('T2129', 2, 'I''m Not Psycho Tee', 270000.0, 'Cổ Tròn, Tay Ngắn, Vạt Ngang, Hình Phía Trước Và Sau', 102, 'images/T2129.png'),
-('T2130', 2, 'Acid Washed Dark', 240000.0, 'Cổ Tròn, Tay Ngắn, Vạt Ngang, Stone Wash', 300, 'images/T2130.png'),
-('T2131', 2, 'Exceptional Tee With Distressed', 250000.0, 'Cổ Tròn, Tay Ngắn, Vạt Ngang, Hình Phía Trước Và Sau, Stone Wash', 198, 'images/T2131.png'),
-('TD481', 7, 'Sinner Sweater', 360000.0, 'Cổ Tròn, Vạt Ngang, Tay Dài Bo, Hình In Mặt Trước Và Sau ', 29, 'images/TD481.png'),
-('TD509', 7, 'Champion Sweater', 169000.0, 'Cổ Tròn, Vạt Ngang, Tay Dài Bo, Hình Thêu Trước ', 447, 'images/TD509.png');
+VALUES ('AP5413', 1, 'Áo Polo Nam Cafe Tổ Ong Phối 3 Màu', 379000.0, 'Áo polo nam cafe dệt tổ ong phối 3 màu độc đáo, đường kẻ chạy dọc vai. Có khả năng chống tia UV đến 98%', 186, 'https://bizweb.dktcdn.net/100/438/408/products/ao-polo-nam-apm5413-tpv-4.jpg?v=1678526379770'),
+('AP6277', 1, 'Áo Polo Nam Mắt Chim Phối Màu Năng Động', 329000.0, 'Chất liệu: Mắt chim. Sử dụng Cotton USA - sợi cotton tốt nhất trên thế giới. Công nghệ nhuộm Solid Dyed tạo nên hiệu ứng bắt mắt', 410, 'https://bizweb.dktcdn.net/100/438/408/products/apm6277-xxm-17.jpg?v=1679031918350'),
+('AP3681', 1, 'Áo Polo Nam Coolmax Phối Bo Kẻ', 399000.0, 'Áo Polo nam chất liệu Coolmax, thành phần 95% Coolmax + 5% Spandex. Vải Coolmax nhẹ, xốp, thoáng mát, truyền dẫn ẩm tốt', 49, 'https://bizweb.dktcdn.net/100/438/408/products/apm3681-cba-qjm3021-den-2-2.jpg?v=1677121919667'),
+('AT2106', 2, 'Áo Thun Thể Thao Nam Run', 269000.0, 'Áo thun nam thể thao, thiết kế mới nhất dành cho nam giới. Chất vải mềm mại, co giãn cực tốt, thấm hút mồ hôi hiệu quả', 95, 'https://bizweb.dktcdn.net/100/438/408/products/ao-thun-nam-the-thao-stm6099-ghi-2-yody.jpg?v=1683536629313'),
+('AT2109', 2, 'Áo Phông Thể Thao Nam Tanktop', 229000.0, 'Áo thun thể thao nam SPORT dáng ba lỗ khoẻ khoắn', 75, 'https://bizweb.dktcdn.net/100/438/408/products/ao-thun-the-thao-nam-stm6079-den-6.jpg?v=1681703010577'),
+('AH2119', 4, 'Áo Gia Đình Thêu COFFEE', 529000.0, 'Chất liệu nỉ. Vải co giãn, giữ ấm, bề mặt vải mịn cùng màu sắc thanh lịch', 82, 'https://bizweb.dktcdn.net/100/438/408/products/atm5081-cb1-3.jpg?v=1668569133223'),
+('SM2127', 3, 'Áo Sơ Mi Cộc Tay Nam Họa Tiết Nhí', 459000.0, 'Vải mềm mại, bền màu, có khả năng thấm hút tốt, bắt nhiệt lạnh nhanh tạo cảm giác mát mẻ cho người mặc. Cổ và nẹp áo giữ phom trong thời gian dài, cúc áo khắc logo YODY nổi bật', 94, 'https://bizweb.dktcdn.net/100/438/408/products/scm6073-tra.jpg?v=1680165705280'),
+('SM2128', 3, 'Sơ Mi Dài Tay Nam In Connect', 599000.0, 'Áo sơ mi nam dài tay kẻ sọc thiết kế phom dáng thoải mái, trẻ trung. Cổ và nẹp áp được giữ phom cực tốt. Lá cổ có cài cúc, ngực in chữ Connect độc đáo', 62, 'https://bizweb.dktcdn.net/100/438/408/products/ao-so-mi-nam-smm6019-kny-3.jpg?v=1683187350837'),
+('AK2129', 5, 'Áo Phao Nam 3s Plus', 699000.0, 'ÁO PHAO NAM 3S PLUS: Siêu nhẹ - Siêu ấm - Siêu gọn - Trượt nước', 102, 'https://bizweb.dktcdn.net/100/438/408/products/phm5017-xcv-05.jpg?v=1677142189040'),
+('AK2130', 5, 'Áo Khoác Gió Nam 3C Plus Năng Động Chống Ngấm Nước, Cản Gió, Cản Bụi', 499000.0, 'Áo khoác nam 3C PLUS - Cản gió, Chống thấm nước vào mặt trong, Cản bụi. Cấu trúc 2 lớp cơ bản', 300, 'https://bizweb.dktcdn.net/100/438/408/products/akm5037-cam-2.jpg?v=1672285629307'),
+('AH2131', 4, 'Áo Gia Đình Thêu Thỏ', 489000.0, 'Chất liệu nỉ co giãn, giữ ấm tốt, bề mặt vải mịn cùng màu sắc hiện đại có thể kết hợp cùng quần nỉ hoặc quần jeans vào mùa thu đông', 198, 'https://bizweb.dktcdn.net/100/438/408/products/atm5111-cba-6.jpg?v=1669965149437');
 
 
 CREATE TABLE product_color(
@@ -58,29 +56,32 @@ CREATE TABLE product_color(
 );
 
 INSERT product_color (product_id, color) 
-VALUES  ('T2131', 'Grey'),
-		('T2131', 'Blue'),
-		('T2130', 'Grey'),
-		('T2119', 'Pink'),
-		('T2119', 'White'),
-		('AT533', 'White'),
-		('AT533', 'Black'),
-		('AT536', 'Red'),
-		('AT536', 'White'),
-		('AT536', 'Black'),
-		('AT536', 'Blue'),
-		('TD509', 'Purple'),
-		('TD509', 'Blue'),
-		('TD509', 'Black'),
-		('TD509', 'White'),
-		('TD481', 'White'),
-		('T2109', 'Orange'),
-		('T2128', 'White'),
-		('T2128', 'Green'),
-		('T2127', 'Black'),
-		('T2099', 'Purple'),
-		('T2129', 'White'),
-		('T2106', 'Yellow');
+VALUES  ('AP5413', 'TRẮNG PHỐI VÀNG'),
+		('AP5413', 'VÀNG PHỐI NAVY'),
+		('AP6277', 'XANH XÁM'),
+		('AP6277', 'ĐEN'),
+		('AP6277', 'XANH LỤC'),
+		('AP3681', 'XANH'),
+        ('AP3681', 'HỒNG'),
+		('AP3681', 'ĐEN'),
+		('AT2106', 'TRẮNG'),
+		('AT2106', 'XANH ĐEN'),
+		('AT2109', 'ĐEN'),
+		('AT2109', 'TÍM THANG'),
+		('AT2109', 'XANH'),
+		('AH2119', 'XANH'),
+		('SM2127', 'ĐEN'),
+		('SM2127', 'TRẮNG'),
+		('SM2128', 'ĐEN'),
+		('SM2128', 'KẺ XANH'),
+		('SM2128', 'TRẮNG'),
+		('AK2129', 'XANH'),
+		('AK2129', 'VÀNG'),
+		('AK2129', 'CAM'),
+		('AK2130', 'CAM'),
+		('AK2130', 'ĐEN'),
+		('AK2130', 'XANH THAN'),
+		('AH2131', 'XANH');
 
 CREATE TABLE product_size(
 	product_id VARCHAR(10) NOT NULL,
@@ -91,43 +92,42 @@ CREATE TABLE product_size(
 );
 
 INSERT product_size (product_id, size) 
-VALUES 	('T2131', 'L'),
-		('T2131', 'XL'),
-		('T2131', 'XXL'),
-		('T2130', 'S'),
-		('T2130', 'L'),
-		('T2119', 'L'),
-		('T2119', 'XL'),
-		('AT533', 'S'),
-		('AT533', 'L'),
-		('AT533', 'XL'),
-		('AT536', 'S'),
-		('AT536', 'L'),
-		('AT536', 'XXL'),
-		('TD509', 'S'),
-		('TD509', 'L'),
-		('TD509', 'XL'),
-		('TD509', 'XXL'),
-		('TD481', 'L'),
-		('TD481', 'XL'),
-		('T2109', 'L'),
-		('T2109', 'XL'),
-		('T2099', 'S'),
-		('T2099', 'L'),
-		('T2099', 'XL'),
-		('T2128', 'XS'),
-		('T2128', 'L'),
-		('T2128', 'XL'),
-		('T2127', 'L'),
-		('T2129', 'XS'),
-		('T2129', 'S'),
-		('T2129', 'L'),
-		('T2129', 'XL'),
-		('T2106', 'S'),
-		('T2106', 'L'),
-		('T2106', 'XL'),
-		('T2106', 'XXL'),
-		('T2106', '3XL');
+VALUES 	('AP5413', 'L'),
+		('AP5413', 'XL'),
+		('AP5413', 'XXL'),
+		('AP6277', 'M'),
+		('AP6277', 'L'),
+		('AP6277', 'XL'),
+		('AP6277', 'XXL'),
+		('AP3681', 'S'),
+		('AP3681', 'L'),
+		('AP3681', 'XL'),
+		('AT2106', 'M'),
+		('AT2106', 'L'),
+		('AT2106', 'XL'),
+		('AT2106', 'XXL'),
+		('AT2109', 'L'),
+		('AT2109', 'XL'),
+		('AT2109', 'XXL'),
+		('AH2119', 'L'),
+		('AH2119', 'XL'),
+		('AH2119', 'XXL'),
+		('SM2127', 'M'),
+		('SM2127', 'L'),
+		('SM2127', 'XL'),
+		('SM2128', 'M'),
+		('SM2128', 'L'),
+		('SM2128', 'XL'),
+		('SM2128', 'XXL'),
+		('AK2129', 'M'),
+		('AK2129', 'L'),
+		('AK2129', 'XL'),
+		('AK2129', 'XXL'),  
+		('AK2130', 'L'),
+		('AK2130', 'XL'),
+		('AK2130', 'XXL'),
+		('AH2131', 'L'),
+		('AH2131', 'XL');
 
 CREATE TABLE category(
 	category_id INT AUTO_INCREMENT NOT NULL,
@@ -135,13 +135,11 @@ CREATE TABLE category(
     PRIMARY KEY (category_id)
 );
 INSERT category (category_id, category_name) 
-VALUES 	(1, 'SHIRT'),
-		(2, 'T-SHIRT'),
-		(3, 'OUTERWEAR'),
-		(4, 'HOODIES'),
-		(5, 'SHORT&PANTS'),
-		(6, 'ACCESSORIES'),
-		(7, 'SWEATSHIRTS');
+VALUES 	(1, 'ÁO POLO'),
+		(2, 'ÁO THUN'),
+		(3, 'ÁO SƠ MI'),
+		(4, 'ÁO NỈ'),
+		(5, 'ÁO KHOÁC');
 
 CREATE TABLE cart(
 	cart_id INT AUTO_INCREMENT NOT NULL,
@@ -174,16 +172,11 @@ CREATE TABLE bill (
 );
 
 INSERT bill (bill_id, user_id, total, payment, address, createDate, phone) 
-VALUES 	(1, 5, 648000.0, 'MOMO', 'Huế', '2023-04-28 16:40:00', '0919208356'),
-		(2, 3, 298000.0, 'MOMO', 'Huế', '2023-04-29 08:30:00', '0888195313'),
-		(3, 2, 378000.0, 'VNPAY', 'Huế', '2023-04-29 15:00:00', '0988195313'),
-		(4, 4, 270000.0, 'Chua thanh toán (VNPAY)', 'Huế', '2023-05-04 14:24:26', '0383298183'),
-		(5, 2, 417000.0, 'Chua thanh toán (VNPAY)', 'Huế', '2023-05-05 09:15:00', '0888195313'),
-		(6, 5, 567000.0, 'COD', 'Đà Nẵng', '2023-05-07 09:00:00', '0988195563'),
-		(7, 5, 278000.0, 'MOMO', 'Huế', '2023-05-08 13:00:00', '0984565123'),
-		(8, 4, 189000.0, 'COD', 'Quảng Trị', '2023-05-08 15:16:17', '0352486515'),
-		(9, 2, 259000.0, 'MOMO', 'Huế', '2023-05-09 08:20:00', '0919208356'),
-		(10, 2, 270000.0, 'VNPAY', 'Huế', '2023-05-09 11:20:00', '0969624868');
+VALUES 	(1, 5, 379000.0, 'MOMO', 'Huế', '2023-04-28 16:40:00', '0919208356'),
+		(2, 2, 1188000.0, 'COD', 'Huế', '2023-04-29 08:30:00', '0888195313'),
+		(3, 4, 918000.0, 'MOMO', 'Huế', '2023-05-04 14:24:26', '0383298183'),
+		(4, 3, 728000.0, 'COD', 'Đà Nẵng', '2023-05-07 09:00:00', '0988195563');
+
 
 CREATE TABLE bill_detail(
 	detail_id INT AUTO_INCREMENT NOT NULL,
@@ -205,14 +198,11 @@ CREATE TABLE bill_detail(
 );
   
 INSERT bill_detail (detail_id, bill_id, product_id, quantity, size, color, price) 
-VALUES  (1, 1,'T2129', 1, 'XS', 'White', 270000.0),
-		(2, 2, 'T2099', 2, 'S', 'Purple', 378000.0),
-		(3, 3, 'AT533', 2, 'S', 'White', 298000.0),
-		(4, 4, 'T2099', 2, 'L', 'Purple', 378000.0),
-		(5, 5, 'T2129', 1, 'XS', 'White', 270000.0),
-		(6, 6, 'AT536', 3, 'S', 'Red', 417000.0),
-		(7, 7, 'T2099', 3, 'S', 'Purple', 567000.0),
-		(8, 8, 'AT536', 2, 'S', 'Red', 278000.0),
-		(9, 9, 'T2099', 1, 'S', 'Purple', 189000.0),
-		(10, 10, 'T2127', 1, 'L', 'Black', 259000.0);bill_detail
+VALUES  (1, 1,'AP5413', 1, 'L', 'TRẮNG PHỐI VÀNG', 379000.0),
+		(2, 2, 'AK2129', 1, 'L', 'XANH', 699000.0),
+		(3, 2, 'AH2131', 1, 'L', 'XANH', 489000.0),
+		(4, 3, 'SM2127', 1, 'XL', 'ĐEN', 459000.0),
+		(5, 3, 'SM2127', 1, 'XL', 'TRẮNG', 459000.0),
+		(6, 4, 'AP6277', 1, 'L', 'ĐEN', 329000.0),
+		(7, 4, 'AP3681', 1, 'L', 'ĐEN', 399000.0);
 
