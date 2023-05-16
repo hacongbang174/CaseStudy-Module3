@@ -14,6 +14,14 @@ public class ValidateUtils {
     public static final String MONTH_REGEX = "^(0?[1-9]|1[012])-((19|20)\\d\\d)$"; // 04-2023
     public static final String FULLNAME_REGEX = "^[\\p{L} \\.'-]+$";
     public static final String NAME_PRODUCT_REGEX = "^[\\p{L}0-9\\s\\.,\\-'()]{5,255}$";
+    public static final String SIZE_PRODUCT_REGEX = "^(S|M|L|XL|XXL)(,\\s*(S|M|L|XL|XXL))*$";
+    public static final String COLOR_PRODUCT_REGEX = "^(?:[\\p{L}\\s]+(?:,\\s)?)+$";
+    public static boolean isSize(String size) {
+        return Pattern.matches(SIZE_PRODUCT_REGEX, size);
+    }
+    public static boolean isColor(String color) {
+        return Pattern.compile(COLOR_PRODUCT_REGEX).matcher(color).matches();
+    }
     public static boolean isIdProduct(String id) {
         return Pattern.matches(ID_PRODUCT_REGEX, id);
     }

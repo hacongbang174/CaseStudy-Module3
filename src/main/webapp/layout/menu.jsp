@@ -152,7 +152,7 @@
                     </div>
                     <div class="col-lg-4">
                         <div class="logo">
-                            <a href="#"><img src="assets/img/logo/logohcb.png" alt="" width="100px" height="150px"></a>
+                            <a href="home"><img src="assets/img/logo/logohcb.png" alt="" width="100px" height="150px"></a>
                         </div>
                     </div>
                     <div class="col-lg-4">

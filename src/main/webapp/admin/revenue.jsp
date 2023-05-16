@@ -104,19 +104,6 @@
 
     <script id="_carbonads_projs" type="text/javascript" src="./Toolbox_files/CK7D52JJ.json"></script>
     <style>
-        .flipX video::-webkit-media-text-track-display {
-            transform: matrix(-1, 0, 0, 1, 0, 0) !important;
-        }
-
-        .flipXY video::-webkit-media-text-track-display {
-            transform: matrix(-1, 0, 0, -1, 0, 0) !important;
-        }
-
-        .flipXYX video::-webkit-media-text-track-display {
-            transform: matrix(1, 0, 0, -1, 0, 0) !important;
-        }
-    </style>
-    <style>
         @keyframes blinkWarning {
             0% {
                 color: red;
@@ -135,12 +122,6 @@
             100% {
                 color: white;
             }
-        }
-
-        .blinkWarning {
-            -webkit-animation: blinkWarning 1s linear infinite;
-            -moz-animation: blinkWarning 1s linear infinite;
-            animation: blinkWarning 1s linear infinite;
         }
     </style>
 </head>
@@ -192,7 +173,7 @@
 <main class="app-content">
     <div class="app-title">
         <ul class="app-breadcrumb breadcrumb side">
-            <li class="breadcrumb-item active"><a href="#"><b>Danh sách người dùng</b></a></li>
+            <li class="breadcrumb-item active"><a href="#"><b>Biểu đồ doanh thu</b></a></li>
         </ul>
         <div id="clock"></div>
     </div>
@@ -217,8 +198,9 @@
                                 Bộ lọc
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="/revenueManager?action=revenueByMonth&type=month">Doanh thu theo tháng</a>
-<%--                                <a class="dropdown-item" href="/revenueManager?action=revenueByYear&type=year">Doanh thu theo năm</a>--%>
+                                <a class="dropdown-item" href="/revenueManager?action=revenueByMonth&type=month">Doanh
+                                    thu theo tháng</a>
+                                <%--                                <a class="dropdown-item" href="/revenueManager?action=revenueByYear&type=year">Doanh thu theo năm</a>--%>
                             </div>
                         </div>
                     </div>
@@ -248,7 +230,7 @@
                                     "data": {
                                         "labels": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
                                         "datasets": [{
-                                            "label": "Revenue By Year = " + ${total},
+                                            "label": "Revenue: " + ${total},
                                             "data": [${bill1}, ${bill2}, ${bill3}, ${bill4}, ${bill5}, ${bill6}, ${bill7}, ${bill8}, ${bill9}, ${bill10}, ${bill11}, ${bill12}],
                                             "fill": false,
                                             "backgroundColor": ["rgba(255, 99, 132, 0.2)", "rgba(255, 159, 64, 0.2)", "rgba(255, 205, 86, 0.2)", "rgba(75, 192, 192, 0.2)", "rgba(54, 162, 235, 0.2)", "rgba(153, 102, 255, 0.2)", "rgba(201, 203, 207, 0.2)"],

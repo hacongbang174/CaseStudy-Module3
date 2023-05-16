@@ -100,7 +100,7 @@
                                     <div class="product_thumb">
                                         <a class="primary_img"
                                            href="product?action=productDetail&product_id=${p.getProduct_id()}"><img
-                                                src="${p.getImg()}" alt="" style="width: 240px; height: 270px"></a>
+                                                src="${p.getImg()}" alt="" style="width: 100%; height: 270px"></a>
 
                                         <div class="quick_button">
                                             <a href="product?action=productDetail&product_id=${p.getProduct_id()}"

@@ -223,7 +223,7 @@
                         <div class="form-group col-md-3">
                             <label for="exampleSelect1" class="control-label">Danh mục</label>
                             <select name="category_id" class="form-control" id="exampleSelect1">
-                                <option>-- Chọn danh mục --</option>
+                                    <option>-- Chọn danh mục --</option>
                                 <c:forEach items="${requestScope.CategoryData}" var="cat">
                                     <option value="${cat.getCategoryID()}">${cat.getCategoryName()}</option>
                                 </c:forEach>
@@ -239,12 +239,12 @@
                         </div>
                         <div class="form-group col-md-3">
                             <label class="control-label">Size</label>
-                            <input class="form-control" name="size" type="text" placeholder="S,L,XL,..." value=""
+                            <input class="form-control" name="size" type="text" placeholder="S, M, L, XL, XXL" value=""
                                    required>
                         </div>
                         <div class="form-group col-md-3">
                             <label class="control-label">Màu</label>
-                            <input class="form-control" placeholder="Blue,Gray,..." name="color" type="text" value=""
+                            <input class="form-control" placeholder="ĐEN, TRẮNG,..." name="color" type="text" value=""
                                    required>
                         </div>
                         <div class="form-group  col-md-3">
@@ -254,8 +254,7 @@
                         <div class="form-group col-md-12">
                             <label class="control-label">Ảnh sản phẩm</label>
                             <div id="myfileupload">
-                                <input type="file" id="uploadfile" name="product_img" onchange="readURL(this);" value=""
-                                       required>
+                                <input type="file" id="uploadfile" name="product_img" onchange="readURL(this);" value="">
                             </div>
                             <div id="thumbbox">
                                 <img height="450" width="400" alt="Thumb image" id="thumbimage" style="display: none"/>
@@ -272,7 +271,7 @@
                             <textarea class="form-control" name="describe" id="describe"></textarea>
                         </div>
                         <c:if test="${requestScope.errors !=null}">
-                            <div class="alert alert-danger">
+                            <div class="alert alert-danger col-md-12">
                                 <ul>
                                     <c:forEach items="${requestScope.errors}" var="e">
                                         <li>${e}</li>

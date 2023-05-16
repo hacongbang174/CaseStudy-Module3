@@ -147,7 +147,7 @@ public class BillDAO {
 
     public List<Bill> getBillByDay() {
         List<Bill> list = new ArrayList<>();
-        String sql = "select b.bill_id, u.user_name,b.phone,b.address,b.createDate,b.total,b.payment from bill b join users u on b.user_id = u.user_id where date = cast(getdate() as Date);";
+        String sql = "select b.bill_id, u.user_name,b.phone,b.address,b.createDate,b.total,b.payment from bill b join `user` u on b.user_id = u.user_id where b.createDate = cast(CURDATE() as Date);";
         try {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(sql);

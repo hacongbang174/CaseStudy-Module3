@@ -204,15 +204,32 @@ public class ProductManagerServlet extends HttpServlet {
             validatePrice(request, errors, product);
             validateQuantity(request, errors, product);
 
-            String category_id = request.getParameter("category_id");
+
             String product_size = request.getParameter("size");
+            if (!ValidateUtils.isSize(product_size)) {
+                errors.add("Size sản phẩm không hợp lệ. Phải là các size \"S, M, L, XL, XXL\"");
+            }
+
             String product_color = request.getParameter("color");
+            if (!ValidateUtils.isColor(product_color)) {
+                errors.add("Màu sắc sản phẩm không hợp lệ. Phải là các size \"ĐEN, TRẮNG, XANH,...\"");
+            }
 
             String product_img = "images/" + request.getParameter("product_img");
+
+            if(product_img.equals("images/")) {
+                errors.add("Chưa có hình ảnh! Thêm hình ảnh sản phẩm để thêm sản phẩm.");
+            }
             String product_describe = request.getParameter("describe");
 
-            int cid = Integer.parseInt(category_id);
-            Category cate = new Category(cid);
+            String category_id = request.getParameter("category_id");
+            if (category_id.equals("-- Chọn danh mục --")) {
+                errors.add("Category sản phẩm không hợp lệ. Vui lòng chọn category sản phẩm");
+            }else {
+                int cid = Integer.parseInt(category_id);
+                Category cate = new Category(cid);
+                product.setCate(cate);
+            }
             String[] size_rw = product_size.split("\\s*,\\s*");
             String[] color_rw = product_color.split("\\s*,\\s*");
             int[] size = new int[size_rw.length];
@@ -237,7 +254,7 @@ public class ProductManagerServlet extends HttpServlet {
                 e.printStackTrace();
             }
 
-            product.setCate(cate);
+
             product.setProduct_describe(product_describe);
             product.setImg(product_img);
             product.setSize(sizeList);
@@ -249,7 +266,8 @@ public class ProductManagerServlet extends HttpServlet {
             } else {
                 request.setAttribute("errors", errors);
             }
-            request.getRequestDispatcher("/admin/insertProduct.jsp").forward(request, response);
+            showInsertProduct(request,response);
+//            request.getRequestDispatcher("/admin/insertProduct.jsp").forward(request, response);
 //            response.sendRedirect("/productManager?action=insertProduct");
         } catch (Exception e) {
             response.sendRedirect("404.jsp");
@@ -291,7 +309,7 @@ public class ProductManagerServlet extends HttpServlet {
     private void validatePrice(HttpServletRequest req, List<String> errors, Product product) {
         try {
             double price = Double.parseDouble(req.getParameter("product_price"));
-            if (price < 0 || price > 10000000) {
+            if (price <= 0 || price > 10000000) {
                 errors.add("Giá phải lớn hơn 0 và nhỏ hơn 10000000");
             } else {
                 product.setProduct_price(price);
@@ -304,7 +322,7 @@ public class ProductManagerServlet extends HttpServlet {
     private void validateQuantity(HttpServletRequest req, List<String> errors, Product product) {
         try {
             int quantity = Integer.parseInt(req.getParameter("product_quantity"));
-            if (quantity < 0 || quantity > 1000) {
+            if (quantity <= 0 || quantity > 1000) {
                 errors.add("Giá phải lớn hơn 0 và nhỏ hơn 1000");
             } else {
                 product.setQuantity(quantity);

@@ -38,7 +38,6 @@ public class ProductDAO {
         }
         return list;
     }
-
     public void insertProduct(Product product) {
         String sql = "insert into product (product_id,category_id,product_name,product_price,product_describe,quantity,img) values(?,?,?,?,?,?,?);";
         try {
@@ -503,7 +502,7 @@ public class ProductDAO {
         List<Product> list = new ArrayList<>();
         String sql = "SELECT DISTINCT c.category_name , p.product_id , p.product_name, p.product_price, p.product_describe, p.quantity,p.img \n"
                 + "FROM product p join category c on c.category_id = p.category_id join product_color ps on p.product_id = ps.product_id\n"
-                + "WHERE product_name LIKE ? OR  product_price LIKE ? OR ps.color LIKE ? OR c.category_name LIKE ?;";
+                + "WHERE p.product_name LIKE ? OR  p.product_price LIKE ? OR ps.color LIKE ? OR c.category_name LIKE ?;";
 
         try {
             conn = new DBContext().getConnection();

@@ -106,7 +106,7 @@
                             <tr>
                                 <td>${b.getBill_id()}</td>
                                 <td>${b.user.getUser_name()}</td>
-                                <td>(+84)${b.getPhone()}</td>
+                                <td>${b.getPhone()}</td>
                                 <td>${b.getAddress()}</td>
                                 <td>${b.getCreateDate()}</td>
                                 <td>${b.getBillTotal(b.getTotal())}</td>

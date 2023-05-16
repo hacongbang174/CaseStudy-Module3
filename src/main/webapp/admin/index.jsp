@@ -45,7 +45,7 @@
     <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" src="admin/images/user.png" width="50px"
                                         alt="User Image">
         <div>
-            <p class="app-sidebar__user-name"><b>${sessionScope.user.user_name}</b></p>
+            <p class="app-sidebar__user-name"><b>${sessionScope.user.getUser_name()}</b></p>
             <p class="app-sidebar__user-designation">Chào mừng bạn trở lại</p>
         </div>
     </div>
@@ -164,10 +164,10 @@
                                     <tr>
                                         <td>${b.getBill_id()}</td>
                                         <td>${b.user.getUser_name()}</td>
-                                        <td>(+84)${b.getPhone()}</td>
+                                        <td>${b.getPhone()}</td>
                                         <td>${b.getAddress()}</td>
                                         <td>${b.getCreateDate()}</td>
-                                        <td>${b.getTotal()}</td>
+                                        <td>${b.getBillTotal(b.getTotal())}</td>
                                         <td><span class="badge bg-success">${b.getPayment()}</span></td>
                                         <td>
                                             <a style=" color: rgb(245 157 57);background-color: rgb(251 226 197); padding: 5px;border-radius: 5px;"

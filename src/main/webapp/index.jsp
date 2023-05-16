@@ -78,7 +78,7 @@
             <div class="col-lg-4 col-md-6">
                 <div class="banner_area">
                     <div class="banner_thumb">
-                        <a href="product"><img src="assets/img/bg/banner8.jpg" alt="#"></a>
+                            <a href="product"><img src="assets/img/bg/banner8.jpg" alt="#"></a>
                     </div>
                 </div>
             </div>

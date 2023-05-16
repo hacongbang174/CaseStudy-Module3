@@ -114,7 +114,7 @@
                         </div>
                         <div class="product_variant quantity">
                             <label>quantity</label>
-                            <input min="1" max="${ProductData.getQuantity()}" name="quantity" type="number">
+                            <input min="1" max="${ProductData.getQuantity()}" name="quantity" type="number" value="1" style="text-align: center">
                             <button class="button" type="submit">Thêm vào giở hàng</button>
                         </div>
 
