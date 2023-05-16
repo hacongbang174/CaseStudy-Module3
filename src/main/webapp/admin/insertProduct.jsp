@@ -338,7 +338,6 @@
     const inpFile = document.getElementById("inpFile");
     const loadFile = document.getElementById("loadFile");
     const previewContainer = document.getElementById("imagePreview");
-    const previewContainer = document.getElementById("imagePreview");
     const previewImage = previewContainer.querySelector(".image-preview__image");
     const previewDefaultText = previewContainer.querySelector(".image-preview__default-text");
     const object = new ActiveXObject("Scripting.FileSystemObject");
@@ -354,8 +353,6 @@
             reader.readAsDataURL(file);
         }
     });
-
-
 </script>
 </body>
 

@@ -147,7 +147,13 @@ public class ProductManagerServlet extends HttpServlet {
 
             String category_id = request.getParameter("category_id");
             String product_size = request.getParameter("product_size");
+            if (!ValidateUtils.isSize(product_size)) {
+                errors.add("Size sản phẩm không hợp lệ. Phải là các size \"S, M, L, XL, XXL\"");
+            }
             String product_color = request.getParameter("product_color");
+            if (!ValidateUtils.isColor(product_color)) {
+                errors.add("Màu sắc sản phẩm không hợp lệ. Phải là các size \"ĐEN, TRẮNG, XANH,...\"");
+            }
             String product_img;
             if (request.getParameter("product_img") == null || request.getParameter("product_img") == "") {
                 product_img = productDAO.getProductByID(product_id).getImg();
@@ -159,7 +165,7 @@ public class ProductManagerServlet extends HttpServlet {
             Category cate = new Category(cid);
             String[] size_rw = product_size.split("\\s*,\\s*");
             String[] color_rw = product_color.split("\\s*,\\s*");
-            int[] size = new int[size_rw.length];
+                int[] size = new int[size_rw.length];
             int[] color = new int[color_rw.length];
             //size
             List<Size> list = new ArrayList<>();

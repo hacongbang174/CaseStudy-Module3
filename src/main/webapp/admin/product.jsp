@@ -93,7 +93,7 @@
                                     class="fas fa-print"></i> In dữ liệu</a>
                         </div>
                     </div>
-                    <form action="/productManager?action=updateProduct" method="POST">
+
                         <table class="table table-hover table-bordered" id="sampleTable">
                             <thead>
                             <tr>
@@ -140,11 +140,13 @@
                                                 value="${p.getProduct_id()}"><i
                                                 class="fas fa-trash-alt"></i>
                                         </button>
+
                                         <button class="btn btn-primary btn-sm edit" type="button" title="Sửa"
                                                 id="show-emp"
                                                 data-toggle="modal" data-target="#ModalUP${p.getProduct_id()}"><i
                                                 class="fas fa-edit"></i>
                                         </button>
+
                                     </td>
                                 </tr>
 
@@ -157,6 +159,7 @@
                                      data-keyboard="false">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
+                                            <form action="/productManager?action=updateProduct" method="POST">
                                             <div class="modal-body">
                                                 <div class="row">
                                                     <div class="form-group  col-md-12">
@@ -224,7 +227,7 @@
                                                         <label class="control-label">Ảnh sản phẩm</label>
                                                         <div id="myfileupload">
                                                             <input type="file" id="uploadfile" name="product_img"
-                                                                   value="${p.getImg()}" onchange="readURL(this);"/>
+                                                                   value="" onchange="readURL(this);"/>
                                                         </div>
                                                         <div id="thumbbox">
                                                             <img height="450" width="400" alt="Thumb image"
@@ -239,10 +242,13 @@
                                                     </div>
                                                 </div>
                                                 <BR>
+
                                                 <button class="btn btn-save" type="submit">Lưu lại</button>
+
                                                 <a class="btn btn-cancel" data-dismiss="modal" href="#">Hủy bỏ</a>
                                                 <BR>
                                             </div>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
@@ -252,7 +258,7 @@
                             </c:forEach>
                             </tbody>
                         </table>
-                    </form>
+
                 </div>
             </div>
         </div>
