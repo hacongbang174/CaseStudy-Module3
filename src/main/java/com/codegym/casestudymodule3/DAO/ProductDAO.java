@@ -272,7 +272,8 @@ public class ProductDAO {
 
     public List<Product> getTrendProduct() {
         List<Product> list = new ArrayList<>();
-        String sql = "SELECT p.product_id , p.product_name, p.product_price, p.product_describe, p.quantity,p.img FROM product p inner join bill_detail bd on p.product_id = bd.product_id  ORDER BY bd.quantity DESC LIMIT 5;";
+        String sql = "SELECT p.product_id , p.product_name, p.product_price, p.product_describe, p.quantity,p.img FROM product p \n" +
+                "join (select b.product_id, count(b.product_id) as countProduct from bill_detail b group by b.product_id order by countProduct DESC LIMIT 5) as bd on p.product_id = bd.product_id;";
         try {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(sql);
