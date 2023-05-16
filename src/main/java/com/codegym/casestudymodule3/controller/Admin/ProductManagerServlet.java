@@ -289,7 +289,9 @@ public class ProductManagerServlet extends HttpServlet {
                 request.getRequestDispatcher("admin/insertProduct.jsp").forward(request, response);
             } else {
                 productDAO.insertCategory(name);
-                request.getRequestDispatcher("productManager?action=insert").forward(request, response);
+                request.setAttribute("message", "Thêm danh mục thành công!");
+                showInsertProduct(request,response);
+//                request.getRequestDispatcher("productManager?action=insert").forward(request, response);
 
             }
         } catch (Exception e) {

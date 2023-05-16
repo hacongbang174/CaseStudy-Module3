@@ -1,5 +1,3 @@
-
-
 -- create database shop_M3;
 -- use shop_M3;
 
