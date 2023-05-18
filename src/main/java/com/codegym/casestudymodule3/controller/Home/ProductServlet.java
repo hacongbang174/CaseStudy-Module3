@@ -59,8 +59,12 @@ public class ProductServlet extends HttpServlet {
         List<Size> sizeList = productDAO.getSizeByID(product_id);
         List<Color> colorList = productDAO.getColorByID(product_id);
         Product product = productDAO.getProductByID(product_id);
+        if (product == null) {
+            request.getRequestDispatcher("/404.jsp").forward(request, response);
+        }
         int category_id = product.getCate().getCategoryID();
         List<Product> productByCategory = productDAO.getProductByCategory(category_id);
+
         request.setAttribute("ProductData", product);
         request.setAttribute("SizeData", sizeList);
         request.setAttribute("ColorData", colorList);

@@ -165,7 +165,7 @@ public class ProductManagerServlet extends HttpServlet {
             Category cate = new Category(cid);
             String[] size_rw = product_size.split("\\s*,\\s*");
             String[] color_rw = product_color.split("\\s*,\\s*");
-                int[] size = new int[size_rw.length];
+            int[] size = new int[size_rw.length];
             int[] color = new int[color_rw.length];
             //size
             List<Size> list = new ArrayList<>();
@@ -192,8 +192,13 @@ public class ProductManagerServlet extends HttpServlet {
             product.setImg(product_img);
             product.setSize(list);
             product.setColor(list2);
-            productDAO.updateProduct(product);
-            response.sendRedirect("productManager");
+            if (errors.isEmpty()) {
+                productDAO.updateProduct(product);
+                request.setAttribute("message", "Thêm sản phẩm thành công");
+            } else {
+                request.setAttribute("errors", errors);
+            }
+            showProduct(request,response);
         } catch (Exception e) {
             response.sendRedirect("404.jsp");
         }
@@ -223,7 +228,7 @@ public class ProductManagerServlet extends HttpServlet {
 
             String product_img = "images/" + request.getParameter("product_img");
 
-            if(product_img.equals("images/")) {
+            if (product_img.equals("images/")) {
                 errors.add("Chưa có hình ảnh! Thêm hình ảnh sản phẩm để thêm sản phẩm.");
             }
             String product_describe = request.getParameter("describe");
@@ -231,7 +236,7 @@ public class ProductManagerServlet extends HttpServlet {
             String category_id = request.getParameter("category_id");
             if (category_id.equals("-- Chọn danh mục --")) {
                 errors.add("Category sản phẩm không hợp lệ. Vui lòng chọn category sản phẩm");
-            }else {
+            } else {
                 int cid = Integer.parseInt(category_id);
                 Category cate = new Category(cid);
                 product.setCate(cate);
@@ -272,7 +277,7 @@ public class ProductManagerServlet extends HttpServlet {
             } else {
                 request.setAttribute("errors", errors);
             }
-            showInsertProduct(request,response);
+            showInsertProduct(request, response);
 //            request.getRequestDispatcher("/admin/insertProduct.jsp").forward(request, response);
 //            response.sendRedirect("/productManager?action=insertProduct");
         } catch (Exception e) {
@@ -290,7 +295,7 @@ public class ProductManagerServlet extends HttpServlet {
             } else {
                 productDAO.insertCategory(name);
                 request.setAttribute("message", "Thêm danh mục thành công!");
-                showInsertProduct(request,response);
+                showInsertProduct(request, response);
 //                request.getRequestDispatcher("productManager?action=insert").forward(request, response);
 
             }
@@ -331,12 +336,12 @@ public class ProductManagerServlet extends HttpServlet {
         try {
             int quantity = Integer.parseInt(req.getParameter("product_quantity"));
             if (quantity <= 0 || quantity > 1000) {
-                errors.add("Giá phải lớn hơn 0 và nhỏ hơn 1000");
+                errors.add("Số lượng phải lớn hơn 0 và nhỏ hơn 1000");
             } else {
                 product.setQuantity(quantity);
             }
         } catch (NumberFormatException numberFormatException) {
-            errors.add("Định dạng giá không hợp lệ");
+            errors.add("Định dạng số lượng không hợp lệ");
         }
     }
 

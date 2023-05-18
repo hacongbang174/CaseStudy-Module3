@@ -12,7 +12,7 @@ import java.sql.SQLException;
 public class DBContext {
     private String jdbcURL = "jdbc:mysql://localhost:3306/shop_m3?allowPublicKeyRetrieval=true&useSSL=false";
     private String jdbcUsername = "root";
-    private String jdbcPassword = "Anhvanmo.123";
+    private String jdbcPassword = "123456";
 
     public Connection getConnection() throws Exception {
         Connection connection = null;

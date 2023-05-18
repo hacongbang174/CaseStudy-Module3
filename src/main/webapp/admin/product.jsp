@@ -70,6 +70,19 @@
                 class="app-menu__label">Kiểm tra phản hồi</span></a></li>
     </ul>
 </aside>
+<c:if test="${requestScope.message !=null}">
+    <script>
+        window.onload = function () {
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Sửa sản phẩm thành công!',
+                showConfirmButton: false,
+                timer: 1500
+            })
+        };
+    </script>
+</c:if>
 <main class="app-content">
     <div class="app-title">
         <ul class="app-breadcrumb breadcrumb side">
@@ -77,6 +90,7 @@
         </ul>
         <div id="clock"></div>
     </div>
+
     <div class="row">
         <div class="col-md-12">
             <div class="tile">
@@ -93,73 +107,79 @@
                                     class="fas fa-print"></i> In dữ liệu</a>
                         </div>
                     </div>
-
-                        <table class="table table-hover table-bordered" id="sampleTable">
-                            <thead>
+                    <c:if test="${requestScope.errors !=null}">
+                        <ul>
+                            <c:forEach items="${requestScope.errors}" var="e">
+                                <li STYLE="color: red">${e}</li>
+                            </c:forEach>
+                        </ul>
+                    </c:if>
+                    <table class="table table-hover table-bordered" id="sampleTable">
+                        <thead>
+                        <tr>
+                            <th>Mã sản phẩm</th>
+                            <th>Danh mục</th>
+                            <th>Tên sản phẩm</th>
+                            <th>Giá</th>
+                            <th>Size</th>
+                            <th>Màu</th>
+                            <th>Thông tin</th>
+                            <th>Số lượng</th>
+                            <th>Ảnh</th>
+                            <th>Chức năng</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <c:forEach items="${requestScope.ProductData}" var="p">
                             <tr>
-                                <th>Mã sản phẩm</th>
-                                <th>Danh mục</th>
-                                <th>Tên sản phẩm</th>
-                                <th>Giá</th>
-                                <th>Size</th>
-                                <th>Màu</th>
-                                <th>Thông tin</th>
-                                <th>Số lượng</th>
-                                <th>Ảnh</th>
-                                <th>Chức năng</th>
+                                <td>${p.getProduct_id()}</td>
+                                <td>${p.cate.getCategoryName()}</td>
+                                <td>${p.getProduct_name()}</td>
+                                <td>${p.getProduct_price()}</td>
+                                <td>
+                                    <c:forEach items="${requestScope.SizeData}" var="s">
+                                        <c:if test="${p.getProduct_id()==s.getProduct_id()}">
+                                            ${s.getSize()}
+                                        </c:if>
+                                    </c:forEach>
+                                </td>
+
+                                <td>
+                                    <c:forEach items="${requestScope.ColorData}" var="c">
+                                        <c:if test="${p.getProduct_id()==c.getProduct_id()}">
+                                            ${c.getColor()}
+                                        </c:if>
+                                    </c:forEach>
+                                </td>
+                                <td>${p.getProduct_describe()}</td>
+                                <td>${p.getQuantity()}</td>
+                                <td><img src="${p.getImg()}" alt="" width="100px;"></td>
+
+                                <td>
+                                    <button class="btn btn-primary btn-sm trash" type="button" title="Xóa"
+                                            value="${p.getProduct_id()}"><i
+                                            class="fas fa-trash-alt"></i>
+                                    </button>
+
+                                    <button class="btn btn-primary btn-sm edit" type="button" title="Sửa"
+                                            id="show-emp"
+                                            data-toggle="modal" data-target="#ModalUP${p.getProduct_id()}"><i
+                                            class="fas fa-edit"></i>
+                                    </button>
+
+                                </td>
                             </tr>
-                            </thead>
-                            <tbody>
-                            <c:forEach items="${requestScope.ProductData}" var="p">
-                                <tr>
-                                    <td>${p.getProduct_id()}</td>
-                                    <td>${p.cate.getCategoryName()}</td>
-                                    <td>${p.getProduct_name()}</td>
-                                    <td>${p.getProduct_price()}</td>
-                                    <td>
-                                        <c:forEach items="${requestScope.SizeData}" var="s">
-                                            <c:if test="${p.getProduct_id()==s.getProduct_id()}">
-                                                ${s.getSize()}
-                                            </c:if>
-                                        </c:forEach>
-                                    </td>
 
-                                    <td>
-                                        <c:forEach items="${requestScope.ColorData}" var="c">
-                                            <c:if test="${p.getProduct_id()==c.getProduct_id()}">
-                                                ${c.getColor()}
-                                            </c:if>
-                                        </c:forEach>
-                                    </td>
-                                    <td>${p.getProduct_describe()}</td>
-                                    <td>${p.getQuantity()}</td>
-                                    <td><img src="${p.getImg()}" alt="" width="100px;"></td>
+                            <!--
+                            MODAL
+                            -->
 
-                                    <td>
-                                        <button class="btn btn-primary btn-sm trash" type="button" title="Xóa"
-                                                value="${p.getProduct_id()}"><i
-                                                class="fas fa-trash-alt"></i>
-                                        </button>
-
-                                        <button class="btn btn-primary btn-sm edit" type="button" title="Sửa"
-                                                id="show-emp"
-                                                data-toggle="modal" data-target="#ModalUP${p.getProduct_id()}"><i
-                                                class="fas fa-edit"></i>
-                                        </button>
-
-                                    </td>
-                                </tr>
-
-                                <!--
-                                MODAL
-                                -->
-
-                                <div class="modal fade" id="ModalUP${p.getProduct_id()}" tabindex="-1" role="dialog"
-                                     aria-hidden="true" data-backdrop="static"
-                                     data-keyboard="false">
-                                    <div class="modal-dialog modal-dialog-centered" role="document">
-                                        <div class="modal-content">
-                                            <form action="/productManager?action=updateProduct" method="POST">
+                            <div class="modal fade" id="ModalUP${p.getProduct_id()}" tabindex="-1" role="dialog"
+                                 aria-hidden="true" data-backdrop="static"
+                                 data-keyboard="false">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <form action="/productManager?action=updateProduct" method="POST">
                                             <div class="modal-body">
                                                 <div class="row">
                                                     <div class="form-group  col-md-12">
@@ -248,16 +268,16 @@
                                                 <a class="btn btn-cancel" data-dismiss="modal" href="#">Hủy bỏ</a>
                                                 <BR>
                                             </div>
-                                            </form>
-                                        </div>
+                                        </form>
                                     </div>
                                 </div>
-                                <!--
-                                MODAL
-                                -->
-                            </c:forEach>
-                            </tbody>
-                        </table>
+                            </div>
+                            <!--
+                            MODAL
+                            -->
+                        </c:forEach>
+                        </tbody>
+                    </table>
 
                 </div>
             </div>

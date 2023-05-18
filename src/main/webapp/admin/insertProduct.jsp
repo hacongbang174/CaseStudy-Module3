@@ -271,13 +271,11 @@
                             <textarea class="form-control" name="describe" id="describe"></textarea>
                         </div>
                         <c:if test="${requestScope.errors !=null}">
-                            <div class="alert alert-danger col-md-12">
                                 <ul>
                                     <c:forEach items="${requestScope.errors}" var="e">
                                         <li>${e}</li>
                                     </c:forEach>
                                 </ul>
-                            </div>
                         </c:if>
                         <button class="btn btn-save" type="submit">Lưu lại</button>
                         &nbsp;
